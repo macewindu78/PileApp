@@ -23,6 +23,7 @@ public class AccueilScreen extends JFrame {
 	protected Container contentPane;
 	protected ChoixCaract pageChoix;
 	protected JMenuBar mBar;
+	protected static AccueilScreen instance;
 	
 	public AccueilScreen(String titre, int width, int height){
 		super(titre);
@@ -101,6 +102,13 @@ public class AccueilScreen extends JFrame {
 
 		
 		this.setVisible(true);
+		
+		instance = this;
+		
+	}
+	
+	public static AccueilScreen GetInstance(){
+		return instance;
 	}
 	
 }

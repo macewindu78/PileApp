@@ -16,6 +16,7 @@ public class ChoixCaract extends JPanel {
 	protected JComboBox metal1, metal2, solution1, solution2, concentration1, concentration2;
 	protected String[] metaux = {"Aluminium", "fer", "zinc", "cuivre", "argent", "or", "plomb"};
 	protected String[] solutions = {"sulfate de cuivre (II)", "Sulfate de zinc", "sulfate d’aluminium", "eau salée", "solution acidifiée"};
+	protected String concentrations[] ={"0.01 mol/L","0.02 mol/L","0.03 mol/L"};
 	
 	public ChoixCaract(){
 		super();
@@ -33,8 +34,8 @@ public class ChoixCaract extends JPanel {
 		solution1 = new JComboBox(solutions);
 		solution2 = new JComboBox(solutions);
 		
-		concentration1 = new JComboBox();
-		concentration2 = new JComboBox();
+		concentration1 = new JComboBox(concentrations);
+		concentration2 = new JComboBox(concentrations);
 		
 		gridChoice.add(new Label("Lame 1 : "));
 		gridChoice.add(metal1);
@@ -67,7 +68,11 @@ public class ChoixCaract extends JPanel {
 		Okay.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				//TODO new JPanel for the rest of the app
+				AccueilScreen.GetInstance().contentPane.removeAll();
 				
+				AccueilScreen.GetInstance().contentPane.add(new SchemaMontage());
+				
+				AccueilScreen.GetInstance().contentPane.revalidate();
 				
 			}
 		});
