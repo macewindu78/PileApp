@@ -24,6 +24,7 @@ public class AccueilScreen extends JFrame {
 	protected ChoixCaract pageChoix;
 	protected JMenuBar mBar;
 	protected static AccueilScreen instance;
+	protected SchemaMontage schmMont;
 	
 	public AccueilScreen(String titre, int width, int height){
 		super(titre);
@@ -50,6 +51,7 @@ public class AccueilScreen extends JFrame {
 			public void actionPerformed(ActionEvent e){
 				contentPane.removeAll();
 				contentPane.add(gPan);
+				contentPane.repaint();
 				contentPane.revalidate();
 			}
 		});
@@ -76,20 +78,18 @@ public class AccueilScreen extends JFrame {
 		 * Buttons on the front page
 		 */
 		JButton college = new JButton("College");
-		college.setBackground(Color.green);
 		college.setSize(width/2, height/4);
 		college.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				System.out.println("College");
 				contentPane.removeAll();
 				contentPane.add(pageChoix);
-				
+				contentPane.repaint();
 				contentPane.revalidate();
 			}
 		});
 		
 		JButton lycee = new JButton("Lycée");
-		lycee.setBackground(Color.blue);
 		college.setSize(width/2, height/4);
 		
 		accueilPan.add(college);
