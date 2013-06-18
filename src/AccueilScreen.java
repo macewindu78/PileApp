@@ -99,7 +99,7 @@ public class AccueilScreen extends JFrame {
 				
 		contentPane.add(gPan);
 		
-
+		this.setResizable(false);
 		
 		this.setVisible(true);
 		
