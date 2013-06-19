@@ -104,6 +104,7 @@ public class AccueilScreen extends JFrame {
 		this.setVisible(true);
 		
 		instance = this;
+		schmMont = new SchemaMontage();
 		
 	}
 	
