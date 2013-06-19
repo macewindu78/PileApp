@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Label;
@@ -11,6 +12,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
@@ -28,7 +30,9 @@ public class ChoixCaract extends JPanel {
 		JPanel titlePan = new JPanel();
 		titlePan.setLayout(new BoxLayout(titlePan, BoxLayout.LINE_AXIS));
 		titlePan.add(Box.createRigidArea(new Dimension(400,50)));
-		titlePan.add(new Label("Choix des caracteristiques"));
+		JLabel title = new JLabel("Choix des caracteristiques");
+		title.setFont(new Font("Arial", Font.PLAIN, 20 ));
+		titlePan.add(title);
 		
 		this.add(titlePan,BorderLayout.NORTH);
 		

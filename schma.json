@@ -1,0 +1,37 @@
+{
+	"name":"atome"
+	"properties" : {
+		"symbol" : {
+							"type" : " String"
+							"description" = "Atomic symbol"
+						}
+		"frenchName" : { "type" : "String"}
+		"atomicNumber" : { "type" : "number"}
+		"meltingPoint" : { 
+								"type" : "number"
+								"description" : "in Kelvin"
+								}
+		"boilingPoint" : {
+								"type" : "number"
+								"description" : "in Kelvin"
+								}
+		"density" : { 
+						"type" : "number"
+						"description" : " in pm"
+						}
+	}	
+	"information":{
+		"firstUse" : {
+						"type" : "String"
+						"description" : "First use and story about it"
+						}
+		"Universe":{
+						"type" : "String"
+						"description" : "URL vers infos"
+						}
+		"InChIKey":{
+						"type" : "String"
+						"description" : "the InChiKey corresponding to the symbol"
+						}
+	}
+}
