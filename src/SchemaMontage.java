@@ -13,12 +13,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-
 public class SchemaMontage extends JPanel {
 	
 	BufferedImage img;
 	JLabel metal1, metal2, solution1, solution2, concentration1, concentration2, Tension, plus, moins, fHaut, fBas, fGauche, fDroit;
+	
+	boolean alreadyOn = false;
+	
 	float potentiel1, potentiel2;
+	
 	public SchemaMontage(){
 		
 		this.setLayout(null);
@@ -65,11 +68,11 @@ public class SchemaMontage extends JPanel {
 		});
 		this.add(retour);
 		
-		JButton sensCourant = new JButton("Sens du courant");
-		sensCourant.setBounds(793, 2, 200, 40);
+		JButton sensCourant = new JButton("Sens conventionnel du courant");
+		sensCourant.setBounds(743, 2, 250, 40);
 		sensCourant.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				AffichSensCourant();
+				affichSensCourant();
 				
 			}
 		});
@@ -109,15 +112,15 @@ public class SchemaMontage extends JPanel {
 		
 	}
 	
-	public void UpDateAffich(){
+	public void upDateAffich(){
 		metal1.setText(MetauxCaract.metaux[AccueilScreen.GetInstance().pageChoix.metal1Choisis]);
 		metal2.setText(MetauxCaract.metaux[AccueilScreen.GetInstance().pageChoix.metal2Choisis]);
 		solution1.setText(MetauxCaract.solutions[AccueilScreen.GetInstance().pageChoix.metal1Choisis]);
 		solution2.setText(MetauxCaract.solutions[AccueilScreen.GetInstance().pageChoix.metal1Choisis]);
-		concentration1.setText(""+Calculs.CalculConcentrationMassique(MetauxCaract.massesMolaires[AccueilScreen.GetInstance().pageChoix.metal1Choisis], MetauxCaract.concentrationsMolaires[AccueilScreen.GetInstance().pageChoix.concentration1Choisis])+ " g/L");
-		concentration2.setText(""+Calculs.CalculConcentrationMassique(MetauxCaract.massesMolaires[AccueilScreen.GetInstance().pageChoix.metal2Choisis], MetauxCaract.concentrationsMolaires[AccueilScreen.GetInstance().pageChoix.concentration2Choisis])+ " g/L");
-		potentiel1 = Calculs.CalculPotentiel(AccueilScreen.GetInstance().pageChoix.metal1Choisis, AccueilScreen.GetInstance().pageChoix.concentration1Choisis);
-		potentiel2 = Calculs.CalculPotentiel(AccueilScreen.GetInstance().pageChoix.metal2Choisis, AccueilScreen.GetInstance().pageChoix.concentration2Choisis);
+		concentration1.setText(""+Calculs.calculConcentrationMassique(MetauxCaract.massesMolaires[AccueilScreen.GetInstance().pageChoix.metal1Choisis], MetauxCaract.concentrationsMolaires[AccueilScreen.GetInstance().pageChoix.concentration1Choisis])+ " g/L");
+		concentration2.setText(""+Calculs.calculConcentrationMassique(MetauxCaract.massesMolaires[AccueilScreen.GetInstance().pageChoix.metal2Choisis], MetauxCaract.concentrationsMolaires[AccueilScreen.GetInstance().pageChoix.concentration2Choisis])+ " g/L");
+		potentiel1 = Calculs.calculPotentiel(AccueilScreen.GetInstance().pageChoix.metal1Choisis, AccueilScreen.GetInstance().pageChoix.concentration1Choisis);
+		potentiel2 = Calculs.calculPotentiel(AccueilScreen.GetInstance().pageChoix.metal2Choisis, AccueilScreen.GetInstance().pageChoix.concentration2Choisis);
 		plus.setVisible(false);
 		moins.setVisible(false);
 		fDroit.setVisible(false);
@@ -125,13 +128,13 @@ public class SchemaMontage extends JPanel {
 		fHaut.setVisible(false);
 		fGauche.setVisible(false);
 		
-		Tension.setText("  " + Calculs.CalculDDP(potentiel1, potentiel2)+ " V");
+		Tension.setText("  " + Calculs.calculDDP(potentiel1, potentiel2)+ " V");
 	}
 	
-	boolean alreadyOn = false;
-	public void AffichSensCourant(){
+	
+	public void affichSensCourant(){
 		if(alreadyOn==false){
-			if(Calculs.CalculDDP(potentiel1, potentiel2)<0){	
+			if(Calculs.calculDDP(potentiel1, potentiel2)<0){	
 				plus.setBounds(290, 280, 50, 50);
 				moins.setBounds(630, 280, 50, 50);
 				fDroit.setBounds(370, 252, 50, 50);
@@ -144,7 +147,7 @@ public class SchemaMontage extends JPanel {
 				fHaut.setVisible(true);
 				alreadyOn = true;
 	
-			}else if(Calculs.CalculDDP(potentiel1, potentiel2)>0){
+			}else if(Calculs.calculDDP(potentiel1, potentiel2)>0){
 				plus.setBounds(630, 280, 50, 50);
 				moins.setBounds(290, 280, 50, 50);
 				fGauche.setBounds(370, 252, 50, 50);

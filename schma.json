@@ -12,13 +12,17 @@
 								"value" : "number",
 								"description" : "in Kelvin"
 								},
+		"atomicRadius" : {
+								"value" : "number",
+								"description" : "in pm"
+								},
 		"density" : { 
 						"value" : "number",
-						"description" : " in pm"
+						"description" : " in g.cm^(-3)"
 						}
 	},
 	"information":{
-		"firstUse" : {
+		"Use" : {
 						"value" : "String",
 						"description" : "First use and story about it"
 						},
@@ -26,9 +30,14 @@
 						"value" : "String",
 						"description" : "URL vers infos"
 						},
-		"InChIKey":{
+		"InChIKey" : {
 						"value" : "String",
 						"description" : "the InChiKey corresponding to the symbol"
-						}
+						},
+		"Wikipedia" : {
+							"frenchValue" : "String",
+							"EnglishValue" : "String",
+							"description" : "URL"
+							}
 	}
 }

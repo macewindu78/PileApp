@@ -7,6 +7,9 @@ import java.awt.GridLayout;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -126,15 +129,14 @@ public class ChoixCaract extends JPanel {
 		JButton InfoHelp = new JButton("Aide");
 		InfoHelp.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				//TODO new JFRAME for HELP
-				
+				ParseJson.returnSearch("Zinc");
 			}
 		});
 		JButton Okay = new JButton("Valider");
 		Okay.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				AccueilScreen.GetInstance().contentPane.removeAll();
-				AccueilScreen.GetInstance().schmMont.UpDateAffich();
+				AccueilScreen.GetInstance().schmMont.upDateAffich();
 				AccueilScreen.GetInstance().contentPane.add(AccueilScreen.GetInstance().schmMont);
 				AccueilScreen.GetInstance().contentPane.repaint();
 				AccueilScreen.GetInstance().contentPane.revalidate();

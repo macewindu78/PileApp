@@ -6,7 +6,7 @@ public class Calculs {
 	}
 	
 	
-	public static float CalculPotentiel(int metalChoisie, int concentrationChoisie){
+	public static float calculPotentiel(int metalChoisie, int concentrationChoisie){
 		float potentiel;
 		
 		potentiel = (float) (MetauxCaract.potentielsStandard[metalChoisie] - 0.0592/3 * Math.log10(1/MetauxCaract.concentrationsMolaires[concentrationChoisie]));
@@ -16,7 +16,7 @@ public class Calculs {
 	}
 	
 	
-	public static float CalculDDP(float potentielLame1, float potentielLame2){
+	public static float calculDDP(float potentielLame1, float potentielLame2){
 		float dDP;
 		
 		dDP = potentielLame1 - potentielLame2;		
@@ -27,7 +27,7 @@ public class Calculs {
 	
 	
 	
-	public static float CalculConcentrationMassique(float masseMolaire, float concentrationMolaire){
+	public static float calculConcentrationMassique(float masseMolaire, float concentrationMolaire){
 		float concentrationMassique;
 		
 		concentrationMassique = masseMolaire * concentrationMolaire;
