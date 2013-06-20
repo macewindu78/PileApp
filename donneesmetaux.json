@@ -1,25 +1,25 @@
 {
-	"name":"atome",
+	"name":"Zinc",
 	"properties" : {
-		"symbol" : " String",
-		"frenchName" : "String",
-		"atomicNumber" :  "number",
+		"symbol" : "Zn",
+		"frenchName" : "Zinc",
+		"atomicNumber" :  "30",
 		"meltingPoint" : { 
-								"value" : "number",
+								"value" : "692.68",
 								"description" : "in Kelvin"
 								},
 		"boilingPoint" : {
-								"value" : "number",
+								"value" : "1180",
 								"description" : "in Kelvin"
 								},
 		"density" : { 
-						"value" : "number",
+						"value" : "7.14",
 						"description" : " in pm"
 						}
 	},
 	"information":{
 		"firstUse" : {
-						"value" : "String",
+						"value" : "Metallurgistes Indiens 1000 ans av. J-C",
 						"description" : "First use and story about it"
 						},
 		"Universe":{
@@ -27,7 +27,7 @@
 						"description" : "URL vers infos"
 						},
 		"InChIKey":{
-						"value" : "String",
+						"value" : "HCHKCACWOHOZIP-UHFFFAOYSA-N",
 						"description" : "the InChiKey corresponding to the symbol"
 						}
 	}
