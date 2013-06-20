@@ -1,3 +1,5 @@
+package Application;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -63,7 +65,7 @@ public class ParseJson{
 			
 			wikipedia = information.getJSONObject("wikipedia");
 			wikipediaFr = wikipedia.getString("frenchValue");
-			wikipediaEn = wikipedia.getString("englichValue");
+			wikipediaEn = wikipedia.getString("englishValue");
 		}
 		catch(JSONException e){
 			e.printStackTrace();
