@@ -2,6 +2,7 @@ package Application;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -9,9 +10,12 @@ import java.awt.GridLayout;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -50,7 +54,7 @@ public class ChoixCaract extends JPanel {
 		metal1.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				metal1Choisis = metal1.getSelectedIndex();
-				System.out.println(metal1Choisis);
+				//System.out.println(metal1Choisis);
 				concentrations1.setText("Concentration en "+MetauxCaract.solutions[metal1Choisis]+" : ");
 				AccueilScreen.GetInstance().contentPane.revalidate();
 			}
@@ -60,7 +64,7 @@ public class ChoixCaract extends JPanel {
 		metal2.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				metal2Choisis = metal2.getSelectedIndex();
-				System.out.println(metal2Choisis);
+				//System.out.println(metal2Choisis);
 				concentrations2.setText("Concentration en " +MetauxCaract.solutions[metal2Choisis]+" : ");
 				AccueilScreen.GetInstance().contentPane.revalidate();
 			}
@@ -71,7 +75,7 @@ public class ChoixCaract extends JPanel {
 		concentration1.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				concentration1Choisis = concentration1.getSelectedIndex();
-				System.out.println(concentration1Choisis);
+				//System.out.println(concentration1Choisis);
 			}
 		});
 		concentration2 = new JComboBox(MetauxCaract.concentrationsMolairesAff);
@@ -79,7 +83,7 @@ public class ChoixCaract extends JPanel {
 		concentration2.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				concentration2Choisis = concentration2.getSelectedIndex();
-				System.out.println(concentration2Choisis);
+				//System.out.println(concentration2Choisis);
 			}
 		});
 		
@@ -131,7 +135,15 @@ public class ChoixCaract extends JPanel {
 		JButton InfoHelp = new JButton("Aide");
 		InfoHelp.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				ParseJson.returnSearch("Zinc");
+				URL jc2 = getClass().getResource("/ressources/html/Index.html");
+				try {
+					Desktop.getDesktop().browse(jc2.toURI());
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				} catch (URISyntaxException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		JButton Okay = new JButton("Valider");

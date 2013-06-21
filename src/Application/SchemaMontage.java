@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -18,7 +19,7 @@ import javax.swing.JPanel;
 public class SchemaMontage extends JPanel {
 	
 	BufferedImage img;
-	JLabel metal1, metal2, solution1, solution2, concentration1, concentration2, Tension, plus, moins, fHaut, fBas, fGauche, fDroit;
+	JLabel metal1, metal2, solution1, solution2, concentration1, concentration2, Tension, plus, moins, fHaut, fBas, fGauche, fDroit, bfDroit, bfGauche, electron;
 	
 	boolean alreadyOn = false;
 	
@@ -29,7 +30,7 @@ public class SchemaMontage extends JPanel {
 		this.setLayout(null);
 		img = null;
 		try {
-		    img = ImageIO.read(getClass().getResource("Imgs/schma.png"));
+		    img = ImageIO.read(getClass().getResource("/ressources/Imgs/schma.png"));
 		} catch (IOException e) {
 			System.out.println("toto");
 		}
@@ -87,30 +88,42 @@ public class SchemaMontage extends JPanel {
 		this.add(Tension);
 		
 		
-		plus = new JLabel(new ImageIcon(getClass().getResource("Imgs/plus.png")));
+		plus = new JLabel(new ImageIcon(getClass().getResource("/ressources/Imgs/plus.png")));
 		plus.setBounds(290, 280, 50, 50);
 		this.add(plus);
 		
-		moins = new JLabel(new ImageIcon(getClass().getResource("Imgs/moins.png")));
+		moins = new JLabel(new ImageIcon(getClass().getResource("/ressources/Imgs/moins.png")));
 		moins.setBounds(630, 280, 50, 50);
 		this.add(moins);
 		
 		
-		fGauche = new JLabel(new ImageIcon(getClass().getResource("Imgs/flechegauche.png")));
+		fGauche = new JLabel(new ImageIcon(getClass().getResource("/ressources/Imgs/flechegauche.png")));
 		fGauche.setBounds(290, 280, 50, 50);
 		this.add(fGauche);
 		
-		fDroit = new JLabel(new ImageIcon(getClass().getResource("Imgs/flechedroite.png")));
+		fDroit = new JLabel(new ImageIcon(getClass().getResource("/ressources/Imgs/flechedroite.png")));
 		fDroit.setBounds(370, 252, 50, 50);
 		this.add(fDroit);
 		
-		fBas = new JLabel(new ImageIcon(getClass().getResource("Imgs/flechebas.png")));
+		fBas = new JLabel(new ImageIcon(getClass().getResource("/ressources/Imgs/flechebas.png")));
 		fBas.setBounds(579, 280, 50, 50);
 		this.add(fBas);
 		
-		fHaut = new JLabel(new ImageIcon(getClass().getResource("Imgs/flechehaut.png")));
+		fHaut = new JLabel(new ImageIcon(getClass().getResource("/ressources/Imgs/flechehaut.png")));
 		fHaut.setBounds(333, 280, 50, 50);
 		this.add(fHaut);
+		
+		bfGauche = new JLabel(new ImageIcon(getClass().getResource("/ressources/Imgs/blackflechegauche.png")));
+		bfGauche.setBounds(530, 254, 50, 50);
+		this.add(bfGauche);
+		
+		bfDroit = new JLabel(new ImageIcon(getClass().getResource("/ressources/Imgs/blackflechedroite.png")));
+		bfDroit.setBounds(530, 254, 50, 50);
+		this.add(bfDroit);
+		
+		electron = new JLabel("e-");
+		electron.setBounds(540, 290, 50, 20);
+		this.add(electron);
 		
 	}
 	
@@ -129,6 +142,10 @@ public class SchemaMontage extends JPanel {
 		fBas.setVisible(false);
 		fHaut.setVisible(false);
 		fGauche.setVisible(false);
+		bfGauche.setVisible(false);
+		bfDroit.setVisible(false);
+		electron.setVisible(false);
+		alreadyOn = false;
 		
 		Tension.setText("  " + Calculs.calculDDP(potentiel1, potentiel2)+ " V");
 	}
@@ -147,6 +164,8 @@ public class SchemaMontage extends JPanel {
 				fDroit.setVisible(true);
 				fBas.setVisible(true);
 				fHaut.setVisible(true);
+				bfGauche.setVisible(true);
+				electron.setVisible(true);
 				alreadyOn = true;
 	
 			}else if(Calculs.calculDDP(potentiel1, potentiel2)>0){
@@ -160,8 +179,9 @@ public class SchemaMontage extends JPanel {
 				moins.setVisible(true);
 				fGauche.setVisible(true);
 				fBas.setVisible(true);
-				fHaut.setVisible(true);				
-				
+				fHaut.setVisible(true);
+				bfDroit.setVisible(true);
+				electron.setVisible(true);
 				
 				alreadyOn = true;
 				
@@ -173,6 +193,9 @@ public class SchemaMontage extends JPanel {
 			fBas.setVisible(false);
 			fHaut.setVisible(false);
 			fGauche.setVisible(false);
+			bfGauche.setVisible(false);
+			bfDroit.setVisible(false);
+			electron.setVisible(false);
 			alreadyOn = false;
 		}
 		

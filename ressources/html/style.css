@@ -1,0 +1,20 @@
+body
+{
+    background-color: white; /* Le fond de la page sera noir */
+}
+
+p
+{
+	margin : 14px;
+    color: black;
+	font-size : 14px;
+}
+
+h1
+{
+	color : blue;
+    font-size: 40px;  /* Titres de 40 pixels */
+	text-align : center;
+}
+
+

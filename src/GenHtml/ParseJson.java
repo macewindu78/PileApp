@@ -1,8 +1,19 @@
-package Application;
+package GenHtml;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,7 +22,7 @@ import org.json.JSONObject;
 public class ParseJson{
 	
 	static JSONObject jsonFile, atome, properties, information, wikipedia;
-	static String name, version, date, symbol, frenchName, atomicNumber,metingPoint, boilingPoint, atomicRadius, density, use, universe, inChIKey, wikipediaFr, wikipediaEn;
+	static String name, version, date, symbol, frenchName, atomicNumber,meltingPoint, boilingPoint, atomicRadius, density, use, universe, inChIKey, wikipediaFr, wikipediaEn;
 	static JSONArray jdata;
 	static int goodAtom;
 	
@@ -20,20 +31,26 @@ public class ParseJson{
 
 	}
 	
-	public static void returnSearch(String wantedAtom){
+	public void returnSearch(String wantedAtom, String jsonPath) throws URISyntaxException{
 		try{
-			 String content = null;
-			 File file = new File("donneesmetaux.json"); 
+			 String content = null, line;
+			 StringBuilder sb = new StringBuilder();
+			 System.out.println(content);
+			 URL jc = getClass().getResource(jsonPath);
+			 System.out.println(jc);
+			 File file = new File(jc.toURI()); 
 			   try {
 			       FileReader reader = new FileReader(file);
 			       char[] chars = new char[(int) file.length()];
 			       reader.read(chars);
-			       System.out.println(chars);
+			       //System.out.println(chars);
 			       content = new String(chars);
 			       reader.close();
 			   } catch (IOException e) {
 			       e.printStackTrace();
 			   }
+
+			System.out.println(content);
 			jsonFile = new JSONObject(content);
 			jdata = jsonFile.getJSONArray("data");
 			version = jsonFile.getString("version");
@@ -53,7 +70,7 @@ public class ParseJson{
 			symbol = properties.getString("symbol");
 			frenchName = properties.getString("frenchName");
 			atomicNumber = properties.getString("atomicNumber");
-			metingPoint = properties.getString("meltingPoint");
+			meltingPoint = properties.getString("meltingPoint");
 			boilingPoint = properties.getString("boilingPoint");
 			atomicRadius = properties.getString("atomicRadius");
 			density = properties.getString("density");
@@ -69,8 +86,18 @@ public class ParseJson{
 		}
 		catch(JSONException e){
 			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
+	}
+	
+	public static String getFrenchName(){
+		return frenchName;
 	}
 	
 	
