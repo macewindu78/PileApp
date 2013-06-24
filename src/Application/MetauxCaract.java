@@ -16,6 +16,9 @@ public class MetauxCaract {
 	protected static String[] solutions = {"sulfate d'aluminium", "sulfate de fer", "sulfate de zinc", "sulfate de cuivre (II)",  "nitrate d'argent", "nitrate d'or","nitrate de plomb"};
 	protected static float[] potentielsStandard = { -1.662f , -0.44f , -0.763f , 0.337f , 0.799f , 1.498f , -0.126f }; //V
 	protected static float[] massesMolaires = { 666.42f, 278.05f , 287.54f , 249.68f , 169.87f , 382.98f , 331.21f }; // g/mol
+	protected static int[] nbreElctronsEchanges = {3,2,2,2,1,3,2};
+	protected static float faraday = 96485.3365f;
+	
 	
 	public static String[] getmetaux(){
 		return metauxEn;

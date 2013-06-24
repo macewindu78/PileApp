@@ -38,6 +38,7 @@ public class Test {
 		}
 
 		AccueilScreen win = new AccueilScreen("Piles electro-chimiques",1000,700);
+		CircuitFermeOption opt = new CircuitFermeOption("Options",450,350);
 	}
 
 }

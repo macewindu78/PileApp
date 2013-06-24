@@ -10,12 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.net.URLDecoder;
-import java.security.CodeSource;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -36,8 +30,6 @@ public class ChoixCaract extends JPanel {
 		this.setLayout(new BorderLayout());
 		
 		JPanel titlePan = new JPanel();
-		titlePan.setLayout(new BoxLayout(titlePan, BoxLayout.LINE_AXIS));
-		titlePan.add(Box.createRigidArea(new Dimension(400,50)));
 		JLabel title = new JLabel("Choix des caracteristiques");
 		title.setFont(new Font("Arial", Font.PLAIN, 20 ));
 		titlePan.add(title);
@@ -45,7 +37,7 @@ public class ChoixCaract extends JPanel {
 		this.add(titlePan,BorderLayout.NORTH);
 		
 		JPanel gridChoice = new JPanel();
-		gridChoice.setLayout(new GridLayout(0,4));
+		gridChoice.setLayout(new GridLayout(0,2));
 		
 		
 		metal1 = new JComboBox(MetauxCaract.metaux);
@@ -112,14 +104,16 @@ public class ChoixCaract extends JPanel {
 		
 		gridChoice.add(new Label("Lame 1 : "));
 		gridChoice.add(metal1);
-		gridChoice.add(new Label("Lame 2 : "));
-		gridChoice.add(metal2);
-	
 		
-		concentrations1 = new Label("Concentration en "+MetauxCaract.solutions[metal1Choisis]+" : ");  
-		concentrations2 = new Label("Concentration en "+MetauxCaract.solutions[metal2Choisis]+" : ");
+		concentrations1 = new Label("Concentration en "+MetauxCaract.solutions[metal1Choisis]+" : ");
 		gridChoice.add(concentrations1);
 		gridChoice.add(concentration1);
+		
+		
+		gridChoice.add(new Label("Lame 2 : "));
+		gridChoice.add(metal2);
+
+		concentrations2 = new Label("Concentration en "+MetauxCaract.solutions[metal2Choisis]+" : ");
 		gridChoice.add(concentrations2);
 		gridChoice.add(concentration2);
 		
@@ -156,8 +150,8 @@ public class ChoixCaract extends JPanel {
 				}
 			}
 		});
-		JButton Okay = new JButton("Valider");
-		Okay.addActionListener(new ActionListener(){
+		JButton okay = new JButton("Valider");
+		okay.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				AccueilScreen.GetInstance().contentPane.removeAll();
 				AccueilScreen.GetInstance().schmMont.upDateAffich();
@@ -169,7 +163,7 @@ public class ChoixCaract extends JPanel {
 			}
 		});
 		otherButtons.add(InfoHelp, BorderLayout.WEST);
-		otherButtons.add(Okay, BorderLayout.EAST);
+		otherButtons.add(okay, BorderLayout.EAST);
 		
 		this.add(otherButtons, BorderLayout.SOUTH);
 	}

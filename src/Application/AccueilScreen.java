@@ -54,7 +54,7 @@ public class AccueilScreen extends JFrame {
 			}
 		});
 		
-		JMenuItem Help = new JMenuItem("Aide");
+		JMenuItem Help = new JMenuItem("Credits");
 		JMenuItem Quit = new JMenuItem("Quit");
 		Quit.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
