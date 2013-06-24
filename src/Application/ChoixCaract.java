@@ -1,11 +1,9 @@
 package Application;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
@@ -13,9 +11,10 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.net.URLDecoder;
+import java.security.CodeSource;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -130,17 +129,28 @@ public class ChoixCaract extends JPanel {
 		
 		this.add(gridChoice, BorderLayout.CENTER);
 		
+		
+		
+		
+		
 		JPanel otherButtons = new JPanel();
 		otherButtons.setLayout(new BorderLayout());
 		JButton InfoHelp = new JButton("Aide");
 		InfoHelp.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				URL jc2 = getClass().getResource("/ressources/html/Index.html");
+				
 				try {
+					String path = Test.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+					System.out.println(path);
+					System.out.println(path.lastIndexOf("/"));
+					if(!Test.eclipse){
+						path = path.substring(0, path.lastIndexOf("."));
+					}
+					System.out.println(path);
+					File jc2 = new File(path+"html/Index.html");
+					System.out.println(jc2);
 					Desktop.getDesktop().browse(jc2.toURI());
 				} catch (IOException e1) {
-					e1.printStackTrace();
-				} catch (URISyntaxException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}

@@ -30,7 +30,7 @@ public class SchemaMontage extends JPanel {
 		this.setLayout(null);
 		img = null;
 		try {
-		    img = ImageIO.read(getClass().getResource("/ressources/Imgs/schma.png"));
+		    img = ImageIO.read(getClass().getResource("/Imgs/schma.png"));
 		} catch (IOException e) {
 			System.out.println("toto");
 		}
@@ -88,36 +88,36 @@ public class SchemaMontage extends JPanel {
 		this.add(Tension);
 		
 		
-		plus = new JLabel(new ImageIcon(getClass().getResource("/ressources/Imgs/plus.png")));
+		plus = new JLabel(new ImageIcon(getClass().getResource("/Imgs/plus.png")));
 		plus.setBounds(290, 280, 50, 50);
 		this.add(plus);
 		
-		moins = new JLabel(new ImageIcon(getClass().getResource("/ressources/Imgs/moins.png")));
+		moins = new JLabel(new ImageIcon(getClass().getResource("/Imgs/moins.png")));
 		moins.setBounds(630, 280, 50, 50);
 		this.add(moins);
 		
 		
-		fGauche = new JLabel(new ImageIcon(getClass().getResource("/ressources/Imgs/flechegauche.png")));
+		fGauche = new JLabel(new ImageIcon(getClass().getResource("/Imgs/flechegauche.png")));
 		fGauche.setBounds(290, 280, 50, 50);
 		this.add(fGauche);
 		
-		fDroit = new JLabel(new ImageIcon(getClass().getResource("/ressources/Imgs/flechedroite.png")));
+		fDroit = new JLabel(new ImageIcon(getClass().getResource("/Imgs/flechedroite.png")));
 		fDroit.setBounds(370, 252, 50, 50);
 		this.add(fDroit);
 		
-		fBas = new JLabel(new ImageIcon(getClass().getResource("/ressources/Imgs/flechebas.png")));
+		fBas = new JLabel(new ImageIcon(getClass().getResource("/Imgs/flechebas.png")));
 		fBas.setBounds(579, 280, 50, 50);
 		this.add(fBas);
 		
-		fHaut = new JLabel(new ImageIcon(getClass().getResource("/ressources/Imgs/flechehaut.png")));
+		fHaut = new JLabel(new ImageIcon(getClass().getResource("/Imgs/flechehaut.png")));
 		fHaut.setBounds(333, 280, 50, 50);
 		this.add(fHaut);
 		
-		bfGauche = new JLabel(new ImageIcon(getClass().getResource("/ressources/Imgs/blackflechegauche.png")));
+		bfGauche = new JLabel(new ImageIcon(getClass().getResource("/Imgs/blackflechegauche.png")));
 		bfGauche.setBounds(530, 254, 50, 50);
 		this.add(bfGauche);
 		
-		bfDroit = new JLabel(new ImageIcon(getClass().getResource("/ressources/Imgs/blackflechedroite.png")));
+		bfDroit = new JLabel(new ImageIcon(getClass().getResource("/Imgs/blackflechedroite.png")));
 		bfDroit.setBounds(530, 254, 50, 50);
 		this.add(bfDroit);
 		

@@ -1,9 +1,8 @@
+package Application;
 
 
-import java.awt.Desktop;
-import java.io.File;
+
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
 
 import Application.AccueilScreen;
@@ -14,6 +13,11 @@ import GenHtml.ParseJson;
 
 public class Test {
 
+	
+	
+	public static boolean eclipse = true;
+	
+	
 	/**
 	 * @param args
 	 * @throws URISyntaxException 
@@ -25,7 +29,7 @@ public class Test {
 		GenerateHtml ghtml = new GenerateHtml();
 		for (int i = 0 ; i<MetauxCaract.getmetaux().length; i++){
 			try {
-				parseJson.returnSearch(MetauxCaract.getmetaux()[i], "/ressources/json/donneesmetaux.json");
+				parseJson.returnSearch(MetauxCaract.getmetaux()[i], "/json/donneesmetaux.json");
 			} catch (URISyntaxException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

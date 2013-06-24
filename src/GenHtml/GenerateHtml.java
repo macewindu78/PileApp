@@ -1,11 +1,14 @@
 package GenHtml;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.util.Scanner;
+
+import Application.Test;
 
 public class GenerateHtml {
 	
@@ -16,57 +19,45 @@ public class GenerateHtml {
 	
 	
 	public void GenHtml(String wantedAtom){
-		 String content = null;
-		 URL jc = getClass().getResource("/ressources/html/architecturemetal.html");
-		 File file = null;
-		try {
-			file = new File(jc.toURI());
-		} catch (URISyntaxException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} 
-		 try {
-		       FileReader reader = new FileReader(file);
-		       char[] chars = new char[(int) file.length()];
-		       reader.read(chars);
-		       System.out.println(chars);
-		       content = new String(chars);
-		       reader.close();
-		 } catch (IOException e) {
-		       e.printStackTrace();
-		 }
-		 
+		String content = null;
+		InputStream fis = getClass().getResourceAsStream("/html/architecturemetal.html");
+		String inputStreamString = new Scanner(fis,"UTF-8").useDelimiter("\\A").next();
+
+		content = inputStreamString;
 	
-		 content = content.replace("[frenchName]", ParseJson.frenchName);
-		 content = content.replace("[name]", ParseJson.name);
-		 content = content.replace("[symbol]", ParseJson.symbol);
-		 content = content.replace("[atomicNumber]", ParseJson.atomicNumber);
-		 content = content.replace("[meltingPoint]", ParseJson.meltingPoint);
-		 content = content.replace("[boilingPoint]", ParseJson.boilingPoint);  
-		 content = content.replace("[atomicRadius]", ParseJson.atomicRadius);
-		 content = content.replace("[density]", ParseJson.density);
-		 content = content.replace("[use]", ParseJson.use);
-		 content = content.replace("[universe]", ParseJson.universe);  
-		 content = content.replace("[inChIKey]", ParseJson.inChIKey);
-		 content = content.replace("[wikipediaFr]", ParseJson.wikipediaFr);
-		 content = content.replace("[wikipediaEn]", ParseJson.wikipediaEn);
+		content = content.replace("[frenchName]", ParseJson.frenchName);
+		content = content.replace("[name]", ParseJson.name);
+		content = content.replace("[symbol]", ParseJson.symbol);
+		content = content.replace("[atomicNumber]", ParseJson.atomicNumber);
+		content = content.replace("[meltingPoint]", ParseJson.meltingPoint);
+		content = content.replace("[boilingPoint]", ParseJson.boilingPoint);  
+		content = content.replace("[atomicRadius]", ParseJson.atomicRadius);
+		content = content.replace("[density]", ParseJson.density);
+		content = content.replace("[use]", ParseJson.use);
+		content = content.replace("[universe]", ParseJson.universe);  
+		content = content.replace("[inChIKey]", ParseJson.inChIKey);
+		content = content.replace("[wikipediaFr]", ParseJson.wikipediaFr);
+		content = content.replace("[wikipediaEn]", ParseJson.wikipediaEn);
 		 
-		 
+		System.out.println(content);
 		 
 		 try{
-			 URL jc1 = getClass().getResource("/ressources/html/contenu/"+wantedAtom+".html");
-			 File zinc = new File(jc1.toURI());
-			 zinc.createNewFile();
-			 FileWriter fw = new FileWriter(zinc);
-			 fw.write(content);
-			 fw.close();
+			String path = Test.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+			System.out.println(path);
+			System.out.println(path.lastIndexOf("/"));
+			if(!Test.eclipse){
+				path = path.substring(0, path.lastIndexOf("."));
+			}
+			System.out.println(path);
+			OutputStream ou = new FileOutputStream(path+"html/contenu/"+wantedAtom+".html");
+			OutputStreamWriter osw = new OutputStreamWriter(ou,"UTF-8");
+			BufferedWriter bw = new BufferedWriter(osw);
+			bw.write(content);
+			bw.close();
 		 }
 		 catch(IOException e){
 			 e.printStackTrace();
-		 } catch (URISyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		 }
 	 }
 	
 	
