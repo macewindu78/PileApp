@@ -44,10 +44,8 @@ public class CircuitFermeOption extends JFrame {
 		metal1.setPreferredSize(new Dimension(100,20));
 		metal1.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				CircuitFerme.metal1 = metal1.getSelectedIndex();
+				AccueilScreen.GetInstance().circuitferme.metal1 = metal1.getSelectedIndex();
 				//System.out.println(metal1Choisis);
-				concentrations1.setText("Concentration en "+MetauxCaract.solutions[CircuitFerme.metal1]+" : ");
-				AccueilScreen.GetInstance().contentPane.revalidate();
 			}
 		});
 		
@@ -55,10 +53,8 @@ public class CircuitFermeOption extends JFrame {
 		metal2.setPreferredSize(new Dimension(100,20));
 		metal2.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				CircuitFerme.metal2 = metal2.getSelectedIndex();
+				AccueilScreen.GetInstance().circuitferme.metal2 = metal2.getSelectedIndex();
 				//System.out.println(metal2Choisis);
-				concentrations2.setText("Concentration en " +MetauxCaract.solutions[CircuitFerme.metal2]+" : ");
-				AccueilScreen.GetInstance().contentPane.revalidate();
 			}
 		});
 		
@@ -66,7 +62,7 @@ public class CircuitFermeOption extends JFrame {
 		concentration1.setPreferredSize(new Dimension(100,20));
 		concentration1.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				CircuitFerme.concentrationMolaire1 = concentration1.getSelectedIndex();
+				AccueilScreen.GetInstance().circuitferme.concentrationMolaire1 = concentration1.getSelectedIndex();
 				//System.out.println(concentration1Choisis);
 			}
 		});
@@ -74,7 +70,7 @@ public class CircuitFermeOption extends JFrame {
 		concentration2.setPreferredSize(new Dimension(100,20));
 		concentration2.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				CircuitFerme.concentrationMolaire2 = concentration2.getSelectedIndex();
+				AccueilScreen.GetInstance().circuitferme.concentrationMolaire2 = concentration2.getSelectedIndex();
 				//System.out.println(concentration2Choisis);
 			}
 		});
@@ -130,11 +126,14 @@ public class CircuitFermeOption extends JFrame {
 		JButton okay = new JButton("Valider");
 		okay.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				CircuitFerme.masse1 = Integer.parseInt(masse1.getText());
-				CircuitFerme.masse2 = Integer.parseInt(masse2.getText());
-				CircuitFerme.volume1 = Integer.parseInt(volume1.getText());
-				CircuitFerme.volume2 = Integer.parseInt(volume2.getText());
-				
+				AccueilScreen.GetInstance().circuitferme.masse1 = Integer.parseInt(masse1.getText());
+				AccueilScreen.GetInstance().circuitferme.masse2 = Integer.parseInt(masse2.getText());
+				AccueilScreen.GetInstance().circuitferme.volume1 = Integer.parseInt(volume1.getText());
+				AccueilScreen.GetInstance().circuitferme.volume2 = Integer.parseInt(volume2.getText());
+				AccueilScreen.GetInstance().circuitferme.R = Integer.parseInt(resistance.getText());
+				Calculs.calculReactLimitantetAvancement();
+				AccueilScreen.GetInstance().circuitferme.refreshChart();
+				AccueilScreen.GetInstance().circuitferme.repaintAffich();
 			}
 		});
 		

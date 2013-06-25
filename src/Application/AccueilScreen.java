@@ -23,6 +23,7 @@ public class AccueilScreen extends JFrame {
 	protected JMenuBar mBar;
 	protected static AccueilScreen instance;
 	protected SchemaMontage schmMont;
+	protected CircuitFerme circuitferme;
 	
 	public AccueilScreen(String titre, int width, int height){
 		super(titre);
@@ -35,6 +36,7 @@ public class AccueilScreen extends JFrame {
 		
 		//init page choix caract
 		pageChoix = new ChoixCaract();
+		circuitferme = new CircuitFerme();
 		
 		
 		gPan = new JPanel();
@@ -79,7 +81,6 @@ public class AccueilScreen extends JFrame {
 		college.setSize(width/2, height/4);
 		college.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				System.out.println("College");
 				contentPane.removeAll();
 				contentPane.add(pageChoix);
 				contentPane.repaint();
@@ -88,7 +89,16 @@ public class AccueilScreen extends JFrame {
 		});
 		
 		JButton lycee = new JButton("Lycée");
-		college.setSize(width/2, height/4);
+		lycee.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				contentPane.removeAll();
+				contentPane.add(circuitferme);
+				contentPane.repaint();
+				contentPane.revalidate();
+			}
+		});
+		
+		lycee.setSize(width/2, height/4);
 		
 		accueilPan.add(college);
 		accueilPan.add(lycee);
@@ -103,7 +113,7 @@ public class AccueilScreen extends JFrame {
 		
 		instance = this;
 		schmMont = new SchemaMontage();
-		
+
 	}
 	
 	public static AccueilScreen GetInstance(){

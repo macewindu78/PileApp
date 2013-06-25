@@ -39,36 +39,42 @@ public class Calculs {
 	
 	
 	
-	public void calculReactLimitantetAvancement(int metal1, int metal2, int concentrationMolaire1, int concentrationMolaire2, float volume1,float volume2, float masse1, float masse2, float R){
+	public static void calculReactLimitantetAvancement(){
 		
 		int factmult1 =1, factmult2 =1, nbElectronEchange = 0;
 		float tempsReaction1, tempsReaction2,tempsTotal;
 		float f = MetauxCaract.faraday;
 		float ddp;
-		float avancement;
-		float solutionf1, solutionf2, metal1f, metal2f;
 		boolean Red2 = false;
+		int nbrElectronsEchanges1 = MetauxCaract.nbreElctronsEchanges[AccueilScreen.GetInstance().circuitferme.metal1],nbrElectronsEchanges2 = MetauxCaract.nbreElctronsEchanges[AccueilScreen.GetInstance().circuitferme.metal2];
+		int metal1= AccueilScreen.GetInstance().circuitferme.metal1, metal2 = AccueilScreen.GetInstance().circuitferme.metal2;
+		int concentrationMolaire1 = AccueilScreen.GetInstance().circuitferme.concentrationMolaire1,concentrationMolaire2 = AccueilScreen.GetInstance().circuitferme.concentrationMolaire2;
+		float volume1 = 0.001f*AccueilScreen.GetInstance().circuitferme.volume1,volume2=0.001f*AccueilScreen.GetInstance().circuitferme.volume2;
+		float masse1 = AccueilScreen.GetInstance().circuitferme.masse1, masse2 =  AccueilScreen.GetInstance().circuitferme.masse2;
+		float R = AccueilScreen.GetInstance().circuitferme.R;
 		
-		if(MetauxCaract.nbreElctronsEchanges[metal1]==MetauxCaract.nbreElctronsEchanges[metal2]){
-			nbElectronEchange = MetauxCaract.nbreElctronsEchanges[metal1];
+		
+		if(nbrElectronsEchanges1==nbrElectronsEchanges2){
+			nbElectronEchange = nbrElectronsEchanges1;
 		}
 		else{
-			nbElectronEchange = MetauxCaract.nbreElctronsEchanges[metal1]*MetauxCaract.nbreElctronsEchanges[metal2];
-			factmult1 = MetauxCaract.nbreElctronsEchanges[metal2];
-			factmult2 = MetauxCaract.nbreElctronsEchanges[metal1];
+			nbElectronEchange = nbrElectronsEchanges1*nbrElectronsEchanges2;
+			factmult1 = MetauxCaract.nbreElctronsEchanges[AccueilScreen.GetInstance().circuitferme.metal2];
+			factmult2 = MetauxCaract.nbreElctronsEchanges[AccueilScreen.GetInstance().circuitferme.metal1];
 		}
 		
-		ddp = calculDDP(calculPotentiel(metal1,concentrationMolaire1),calculPotentiel(metal2,concentrationMolaire2));
+		ddp = calculDDP(calculPotentiel(metal1,concentrationMolaire1),calculPotentiel(metal2, concentrationMolaire2));
 		
 		if(MetauxCaract.potentielsStandard[metal1]>MetauxCaract.potentielsStandard[metal2]){
 		
-			tempsReaction1 = concentrationMolaire1*volume1*R*MetauxCaract.nbreElctronsEchanges[metal1]*f/Math.abs(ddp);
+			tempsReaction1 = MetauxCaract.concentrationsMolaires[concentrationMolaire1]*volume1*R*MetauxCaract.nbreElctronsEchanges[metal1]*f/Math.abs(ddp);
 			tempsReaction2 = masse2/MetauxCaract.massesMolaires[metal2]*R*MetauxCaract.nbreElctronsEchanges[metal2]*f/Math.abs(ddp);
 			Red2 = true;
 		
 		}else{
 			tempsReaction1 = masse1/MetauxCaract.massesMolaires[metal1]*R*MetauxCaract.nbreElctronsEchanges[metal1]*f/Math.abs(ddp);
-			tempsReaction2 = concentrationMolaire2*volume2*R*MetauxCaract.nbreElctronsEchanges[metal2]*f/Math.abs(ddp);
+			tempsReaction2 = MetauxCaract.concentrationsMolaires[concentrationMolaire2]*volume2*R*MetauxCaract.nbreElctronsEchanges[metal2]*f/Math.abs(ddp);
+			Red2 = false;
 		}
 		
 		if(tempsReaction1<tempsReaction2){
@@ -76,33 +82,80 @@ public class Calculs {
 		}else{
 			tempsTotal = tempsReaction2;
 		}
-		avancement = ddp*tempsTotal/(R*f*nbElectronEchange);
+		AccueilScreen.GetInstance().circuitferme.avancementFinal = Math.abs(ddp)*tempsTotal/(R*f*nbElectronEchange);
 		
-		if(Red2 = true){
-			solutionf1 = concentrationMolaire1*volume1 - factmult1*avancement;
-			solutionf2 = concentrationMolaire2*volume2 + factmult2*avancement;
+		if(Red2 == true){
+			AccueilScreen.GetInstance().circuitferme.concentrationfinale1 = MetauxCaract.concentrationsMolaires[concentrationMolaire1]*volume1 - factmult1*AccueilScreen.GetInstance().circuitferme.avancementFinal;
+			AccueilScreen.GetInstance().circuitferme.concentrationfinale2 = MetauxCaract.concentrationsMolaires[concentrationMolaire2]*volume2 + factmult2*AccueilScreen.GetInstance().circuitferme.avancementFinal;
 		
-			metal1f = masse1/MetauxCaract.massesMolaires[metal1] + factmult1*avancement;
-			metal1f = masse2/MetauxCaract.massesMolaires[metal2] - factmult2*avancement;
+			AccueilScreen.GetInstance().circuitferme.masseFinale1 = masse1/MetauxCaract.massesMolaires[metal1] + factmult1*AccueilScreen.GetInstance().circuitferme.avancementFinal;
+			AccueilScreen.GetInstance().circuitferme.masseFinale2 = masse2/MetauxCaract.massesMolaires[metal2] - factmult2*AccueilScreen.GetInstance().circuitferme.avancementFinal;
 		}else{
-			solutionf1 = concentrationMolaire1*volume1 + factmult1*avancement;
-			solutionf2 = concentrationMolaire2*volume2 - factmult2*avancement;
+			AccueilScreen.GetInstance().circuitferme.concentrationfinale1 = MetauxCaract.concentrationsMolaires[concentrationMolaire1]*volume1 + factmult1*AccueilScreen.GetInstance().circuitferme.avancementFinal;
+			AccueilScreen.GetInstance().circuitferme.concentrationfinale2 = MetauxCaract.concentrationsMolaires[concentrationMolaire2]*volume2 - factmult2*AccueilScreen.GetInstance().circuitferme.avancementFinal;
 		
-			metal1f = masse1/MetauxCaract.massesMolaires[metal1] - factmult1*avancement;
-			metal1f = masse2/MetauxCaract.massesMolaires[metal2] + factmult2*avancement;
+			AccueilScreen.GetInstance().circuitferme.masseFinale1 = masse1/MetauxCaract.massesMolaires[metal1] - factmult1*AccueilScreen.GetInstance().circuitferme.avancementFinal;
+			AccueilScreen.GetInstance().circuitferme.masseFinale2 = masse2/MetauxCaract.massesMolaires[metal2] + factmult2*AccueilScreen.GetInstance().circuitferme.avancementFinal;
 		}
+		
+		
+		if(AccueilScreen.GetInstance().circuitferme.concentrationfinale1 < 0.00001){
+			AccueilScreen.GetInstance().circuitferme.concentrationfinale1 =0;
+		}
+		if(AccueilScreen.GetInstance().circuitferme.concentrationfinale2 < 0.00001){
+			AccueilScreen.GetInstance().circuitferme.concentrationfinale2 =0;
+		}
+		if(AccueilScreen.GetInstance().circuitferme.masseFinale1 < 0.00001){
+			AccueilScreen.GetInstance().circuitferme.masseFinale1 =0;
+		}
+		if(AccueilScreen.GetInstance().circuitferme.masseFinale2 < 0.00001){
+			AccueilScreen.GetInstance().circuitferme.masseFinale2 =0;
+		}
+	
 	}
 	
-	public float calculReactTempsT(int metal1, int metal2, float ddp, float R, float t){
+	public float calculReactTempsT(float temps,float ddp){
 		float avancement;
 		
-		avancement = ddp*t/(R*MetauxCaract.faraday*MetauxCaract.nbreElctronsEchanges[metal1]*MetauxCaract.nbreElctronsEchanges[metal2]);
+		avancement = Math.abs(ddp)*temps/(AccueilScreen.GetInstance().circuitferme.R*MetauxCaract.faraday*MetauxCaract.nbreElctronsEchanges[AccueilScreen.GetInstance().circuitferme.metal1]*MetauxCaract.nbreElctronsEchanges[AccueilScreen.GetInstance().circuitferme.metal2]);
 		
 		return avancement;
 	}
 	
-	public void calculconcentrations(float avancement, float metal){
+	public void calculConcentrationsEtMasse(float avancement){
+		int metal1= AccueilScreen.GetInstance().circuitferme.metal1, metal2 = AccueilScreen.GetInstance().circuitferme.metal2;
+		float volume1 = 0.001f*AccueilScreen.GetInstance().circuitferme.volume1,volume2=0.001f*AccueilScreen.GetInstance().circuitferme.volume2;
+		float masse1 = AccueilScreen.GetInstance().circuitferme.masse1, masse2 =  AccueilScreen.GetInstance().circuitferme.masse2;
+		int concentrationMolaire1 = AccueilScreen.GetInstance().circuitferme.concentrationMolaire1,concentrationMolaire2 = AccueilScreen.GetInstance().circuitferme.concentrationMolaire2;
+		int factmult1 =1, factmult2 =1;
+		int nbrElectronsEchanges1 = MetauxCaract.nbreElctronsEchanges[AccueilScreen.GetInstance().circuitferme.metal1],nbrElectronsEchanges2 = MetauxCaract.nbreElctronsEchanges[AccueilScreen.GetInstance().circuitferme.metal2];
+
 		
+
+		if(nbrElectronsEchanges1!=nbrElectronsEchanges2){
+			factmult1 = MetauxCaract.nbreElctronsEchanges[AccueilScreen.GetInstance().circuitferme.metal2];
+			factmult2 = MetauxCaract.nbreElctronsEchanges[AccueilScreen.GetInstance().circuitferme.metal1];
+		}
+		else{
+			factmult1 = 1;
+			factmult2 = 1;
+		}
+
+		
+		if(MetauxCaract.potentielsStandard[metal1]>MetauxCaract.potentielsStandard[metal2]){
+			AccueilScreen.GetInstance().circuitferme.concentration1TempsT = MetauxCaract.concentrationsMolaires[concentrationMolaire1]*volume1 - factmult1*AccueilScreen.GetInstance().circuitferme.avancementFinal;
+			AccueilScreen.GetInstance().circuitferme.concentration2TempsT = MetauxCaract.concentrationsMolaires[concentrationMolaire2]*volume2 + factmult2*AccueilScreen.GetInstance().circuitferme.avancementFinal;
+		
+			AccueilScreen.GetInstance().circuitferme.masse1TempsT = masse1/MetauxCaract.massesMolaires[metal1] + factmult1*AccueilScreen.GetInstance().circuitferme.avancementFinal;
+			AccueilScreen.GetInstance().circuitferme.masse2TempsT = masse2/MetauxCaract.massesMolaires[metal2] - factmult2*AccueilScreen.GetInstance().circuitferme.avancementFinal;
+			
+		}else{
+			AccueilScreen.GetInstance().circuitferme.concentration1TempsT = MetauxCaract.concentrationsMolaires[concentrationMolaire1]*volume1 + factmult1*AccueilScreen.GetInstance().circuitferme.avancementFinal;
+			AccueilScreen.GetInstance().circuitferme.concentration2TempsT = MetauxCaract.concentrationsMolaires[concentrationMolaire2]*volume2 - factmult2*AccueilScreen.GetInstance().circuitferme.avancementFinal;
+		
+			AccueilScreen.GetInstance().circuitferme.masse1TempsT = masse1/MetauxCaract.massesMolaires[metal1] - factmult1*AccueilScreen.GetInstance().circuitferme.avancementFinal;
+			AccueilScreen.GetInstance().circuitferme.masse2TempsT = masse2/MetauxCaract.massesMolaires[metal2] + factmult2*AccueilScreen.GetInstance().circuitferme.avancementFinal;
+		}
 		
 		
 		
