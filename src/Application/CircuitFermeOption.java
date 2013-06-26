@@ -26,7 +26,7 @@ public class CircuitFermeOption extends JFrame {
 	
 	public CircuitFermeOption(String titre, int width, int height){
 		super(titre);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setSize(width,height);
 		
 		
@@ -133,7 +133,7 @@ public class CircuitFermeOption extends JFrame {
 				AccueilScreen.GetInstance().circuitferme.R = Integer.parseInt(resistance.getText());
 				Calculs.calculReactLimitantetAvancement();
 				AccueilScreen.GetInstance().circuitferme.refreshChart();
-				AccueilScreen.GetInstance().circuitferme.repaintAffich();
+				AccueilScreen.GetInstance().val.repaintAffich();
 			}
 		});
 		
@@ -149,7 +149,7 @@ public class CircuitFermeOption extends JFrame {
 		
 		this.setResizable(false);
 		
-		this.setVisible(true);
+		this.setVisible(false);
 		
 		
 	}

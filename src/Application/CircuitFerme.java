@@ -1,13 +1,16 @@
 package Application;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -21,13 +24,20 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class CircuitFerme extends JPanel{
 
 	int metal1 =0, metal2 =1, concentrationMolaire1=0, concentrationMolaire2=1;
-	float volume1 =1, volume2 =1,  masse1 =1,  masse2 = 1,  R =1, avancementFinal, concentrationfinale1, concentrationfinale2, masseFinale1, masseFinale2, avancementTempsT, tempsT,concentration1TempsT, concentration2TempsT, masse1TempsT, masse2TempsT;
-	JLabel metal1Label, metal2Label, solution1Label, solution2Label, concentration1Label, concentration2Label, volume1Label, volume2Label, masse1Label, masse2Label, RLabel, avancementFinalLabel, concentrationfinale1Label, concentrationfinale2Label, masseFinale1Label, masseFinale2Label;
+	float volume1 =1, volume2 =1,  masse1 =1,  masse2 = 1,  R =1, avancementFinal, concentrationfinale1, concentrationfinale2, masseFinale1, masseFinale2, avancementTempsT, tempsT=0,concentration1TempsT, concentration2TempsT, masse1TempsT, masse2TempsT, ddp, tempsTotal=0, massevol1finale,massevol2finale, massevol1TempsT, massevol2TempsT;
+	JLabel tempsTotalLabel, tempsTLabel, tempsTotalLabelconv, tempsTLabelconv;
 	JPanel chartPanel;
 	JFreeChart chartMasse, chartConcentration;
 	ChartPanel cPanelMasse, cPanelConcentration ;
 	CategoryDataset datasetMasse, datasetconcentration;
 	boolean initial = true;
+	protected String[] fonctionTempsPourcent = {"0%","10%" , "20%", "30%" , "40%", "50%", "60%", "70%", "80%","90%", "100%"};
+	JComboBox fonctionTemps;
+	JButton EtatfinalInit;
+
+	
+	
+	
 	
 	public CircuitFerme(){
 		
@@ -35,63 +45,33 @@ public class CircuitFerme extends JPanel{
 		
 		JPanel titlePan = new JPanel();
 		JLabel title = new JLabel("Circuit Fermé");
-		title.setFont(new Font("Arial", Font.PLAIN, 16 ));
+		title.setFont(new Font("Arial", Font.BOLD, 20 ));
 		titlePan.add(title);
-		
-		
-		JPanel TestVals = new JPanel();
-		TestVals.setLayout(new GridLayout(0,2));
-		
-		metal1Label = new JLabel("Metal 1 :"+MetauxCaract.metaux[metal1]);
-		masse1Label = new JLabel("Masse metal 1"+masse1+" g.");
-		concentration1Label = new JLabel("Concentration solution 1"+MetauxCaract.concentrationsMolairesAff[concentrationMolaire1]);
-		volume1Label = new JLabel("Volume solution 1 :"+volume1+" mL");
-		
-		metal2Label = new JLabel("Métal 2 :"+MetauxCaract.metaux[metal2]);
-		masse2Label = new JLabel("Masse métal 2 :"+masse2+" g");
-		concentration2Label = new JLabel("Concentration solution 2 : "+MetauxCaract.concentrationsMolairesAff[concentrationMolaire2]);
-		volume2Label = new JLabel("Volume solution 2 : "+volume2+" mL");
-		
-		RLabel = new JLabel("Resistance : "+R+ " Ohm");
-		avancementFinalLabel = new JLabel("Avancement final : "+avancementFinal);
-		concentrationfinale1Label = new JLabel("concentration 1 finale : "+concentrationfinale1);
-		concentrationfinale2Label = new JLabel("concentration 2 finale : "+concentrationfinale2);
-		masseFinale1Label = new JLabel("masse 1 finale : "+masseFinale1);
-		masseFinale2Label = new JLabel("masse 2 finale : "+masseFinale2);
-		
-		TestVals.add(metal1Label);
-		TestVals.add(masse1Label);
-		TestVals.add(concentration1Label);
-		TestVals.add(volume1Label);
 
-		TestVals.add(metal2Label);
-		TestVals.add(masse2Label);
-		TestVals.add(concentration2Label);
-		TestVals.add(volume2Label);
-		
-		TestVals.add(RLabel);
-		TestVals.add(avancementFinalLabel);
-		TestVals.add(concentrationfinale1Label);
-		TestVals.add(concentrationfinale2Label);
-		TestVals.add(masseFinale1Label);
-		TestVals.add(masseFinale2Label);
-		
 		
 		JButton Option = new JButton("Options");
 		Option.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				CircuitFermeOption opt = new CircuitFermeOption("Options",450,350);
+				AccueilScreen.GetInstance().opt.setVisible(true);
 			}
 		});
 		
-		this.add(titlePan, BorderLayout.NORTH);
-		//this.add(TestVals, BorderLayout.CENTER);
-		this.add(Option, BorderLayout.SOUTH);
+		JButton valeurs = new JButton("Valeurs");
+		valeurs.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				AccueilScreen.GetInstance().val.setVisible(true);
+			}
+		});
+		
+		
+		JPanel south = new JPanel();
+		south.add(Option);
+		south.add(valeurs);
 		
 		datasetMasse = createDatasetMasse(initial);
 		datasetconcentration = createDatasetConcentration(initial);
-		chartMasse = createChart(datasetMasse);
-		chartConcentration = createChart(datasetconcentration);
+		chartMasse = createChartMasse(datasetMasse);
+		chartConcentration = createChartConcentration(datasetconcentration);
 		cPanelConcentration = new ChartPanel(chartConcentration);
 		cPanelMasse = new ChartPanel(chartMasse);
 		chartPanel = new JPanel();
@@ -101,16 +81,20 @@ public class CircuitFerme extends JPanel{
 		this.add(chartPanel, BorderLayout.CENTER);
 		
 		
-		final JButton EtatfinalInit = new JButton("Etat initial");
+		EtatfinalInit = new JButton("Etat initial");
+		EtatfinalInit.setAlignmentX(CENTER_ALIGNMENT);
 		EtatfinalInit.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				
 				if(initial==true){
 					initial = false;
 					EtatfinalInit.setText("Etat final");
+					fonctionTemps.setSelectedIndex(10);
+					
 				}else{
 					initial=true;
 					EtatfinalInit.setText("Etat initial");
+					fonctionTemps.setSelectedIndex(0);
 				}
 				refreshChart();
 				AccueilScreen.GetInstance().contentPane.repaint();
@@ -118,32 +102,80 @@ public class CircuitFerme extends JPanel{
 			}
 		});
 		
+		tempsTotalLabel = new JLabel("Temps total de réaction : "+tempsTotal+" s");
+		tempsTotalLabel.setAlignmentX(CENTER_ALIGNMENT);
+		
+		tempsTotalLabelconv = new JLabel(conversionSecHeure(tempsTotal));
+		tempsTotalLabelconv.setAlignmentX(CENTER_ALIGNMENT);
+		
+		
+		fonctionTemps = new JComboBox(fonctionTempsPourcent);
+		fonctionTemps.setPreferredSize(new Dimension(100, 20));
+		fonctionTemps.setMaximumSize(fonctionTemps.getPreferredSize());
+		fonctionTemps.setAlignmentX(CENTER_ALIGNMENT);
+		fonctionTemps.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				tempsT = fonctionTemps.getSelectedIndex();
+				tempsT = tempsT*0.1f*tempsTotal;
+				avancementTempsT = Calculs.calculReactTempsT(tempsT, ddp);
+				Calculs.calculConcentrationsEtMasse(avancementTempsT);
+				refreshChartTempsT();
+				tempsTLabel.setText("Temps t : "+ tempsT + " s");
+				tempsTLabelconv.setText(conversionSecHeure(tempsT));
+				repaint();
+				System.out.println(tempsT);
+				System.out.println(avancementTempsT);
+			}
+		});
+		
+		tempsTLabel = new JLabel("Temps t : "+ tempsT + " s");
+		tempsTLabel.setAlignmentX(CENTER_ALIGNMENT);
+		
+		tempsTLabelconv = new JLabel(conversionSecHeure(tempsT));
+		tempsTLabelconv.setAlignmentX(CENTER_ALIGNMENT);
+
+		
 		JPanel ouest = new JPanel();
-		ouest.setLayout(new FlowLayout());
+		ouest.setLayout(new BoxLayout(ouest, BoxLayout.Y_AXIS));
 		ouest.add(EtatfinalInit);
+		ouest.add(tempsTotalLabel);
+		ouest.add(tempsTotalLabelconv);
+		ouest.add(fonctionTemps);
+		ouest.add(tempsTLabel);
+		ouest.add(tempsTLabelconv);
+
+		this.add(titlePan, BorderLayout.NORTH);
+		
+		this.add(south, BorderLayout.SOUTH);
 		
 		this.add(ouest, BorderLayout.WEST);
 		
-		
 	}
 	
-	public void repaintAffich(){
-		metal1Label.setText("Metal 1 : "+MetauxCaract.metaux[metal1]);
-		masse1Label.setText("Masse métal 1 : "+masse1+" g.");
-		concentration1Label.setText("Concentration solution 1 :"+MetauxCaract.concentrationsMolairesAff[concentrationMolaire1]);
-		volume1Label.setText("Volume solution 1 :"+volume1+" mL");
-		metal2Label.setText("Metal 2 : "+MetauxCaract.metaux[metal2]);
-		masse2Label.setText("Masse métal 2 : "+masse2+" g.");
-		concentration2Label.setText("Concentration solution 2 :"+MetauxCaract.concentrationsMolairesAff[concentrationMolaire2]);
-		volume2Label.setText("Volume solution 2 :"+volume2+" mL");
-		RLabel.setText("Résistance : "+R+ " Ohm");
-		avancementFinalLabel.setText("Avancement final : "+avancementFinal);
-		concentrationfinale1Label.setText("concentration 1 finale : "+concentrationfinale1);
-		concentrationfinale2Label.setText("concentration 2 finale : "+concentrationfinale2);
-		masseFinale1Label.setText("masse 1 finale : "+masseFinale1);
-		masseFinale2Label.setText("masse 2 finale : "+masseFinale2);
-		AccueilScreen.GetInstance().contentPane.repaint();
+	
+	public void conversionAffich(){
+		massevol1finale = concentrationfinale1 * MetauxCaract.massesMolaires[metal1];
+		massevol2finale = concentrationfinale2 * MetauxCaract.massesMolaires[metal2];
+		massevol1TempsT = concentration1TempsT * MetauxCaract.massesMolaires[metal1];
+		massevol2TempsT = concentration2TempsT * MetauxCaract.massesMolaires[metal2];
 	}
+	
+	
+	
+	public String conversionSecHeure(float tempsSec){
+		String tempsHeure;
+		int heure,min,sec;
+		heure = (int) (tempsSec/3600);
+		min = (int) ((tempsSec%3600)/60);
+		sec = (int)(((tempsSec%3600)%60));		
+		
+		tempsHeure = "Ce qui équivaut à :"+heure+" h, "+min+" min, "+sec+" s.";
+		
+		return tempsHeure;
+	}
+	
+	
+
 	
 	private CategoryDataset createDatasetMasse(boolean initial){
 		
@@ -160,28 +192,53 @@ public class CircuitFerme extends JPanel{
 		return dataset;
 	}
 	
-	private CategoryDataset createDatasetConcentration(boolean initial){
+	
+	private CategoryDataset createDatasetMasseTempsT(){
+	
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+			dataset.addValue(masse1TempsT, MetauxCaract.metaux[metal1], "g");
+			dataset.addValue(masse2TempsT, MetauxCaract.metaux[metal2], "g");
 		
+		return dataset;
+	}
+	
+	private CategoryDataset createDatasetConcentration(boolean initial){
+		conversionAffich();
 		
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		if(initial){
-			dataset.addValue(MetauxCaract.concentrationsMolaires[concentrationMolaire1], MetauxCaract.solutions[metal1], "mol/L");
-			dataset.addValue(MetauxCaract.concentrationsMolaires[concentrationMolaire2], MetauxCaract.solutions[metal2], "mol/L");
+			dataset.addValue(MetauxCaract.concentrationsMolaires[concentrationMolaire1]* MetauxCaract.massesMolaires[metal1], MetauxCaract.solutions[metal1], "g/L");
+			dataset.addValue(MetauxCaract.concentrationsMolaires[concentrationMolaire2]* MetauxCaract.massesMolaires[metal2], MetauxCaract.solutions[metal2], "g/L");
 		}else{
-			dataset.addValue(concentrationfinale1, MetauxCaract.solutions[metal1], "mol/L");
-			dataset.addValue(concentrationfinale2, MetauxCaract.solutions[metal2], "mol/L");
+			dataset.addValue(massevol1finale, MetauxCaract.solutions[metal1], "mol/L");
+			dataset.addValue(massevol2finale, MetauxCaract.solutions[metal2], "mol/L");
 
 		}
 		
 		return dataset;
 	}
-	
-	
-	private JFreeChart createChart(CategoryDataset dataset){
+
+	private CategoryDataset createDatasetConcentrationTempsT(){
 		
-		JFreeChart chart = ChartFactory.createBarChart( "EtatInit", "Réactifs et produits", "Valeures", dataset, PlotOrientation.VERTICAL, true, true, false);
+		conversionAffich();
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+			dataset.addValue(massevol1TempsT, MetauxCaract.solutions[metal1],"g");
+			dataset.addValue(massevol2TempsT, MetauxCaract.solutions[metal2],"g");
 
 		
+		return dataset;
+	}
+	
+	private JFreeChart createChartMasse(CategoryDataset dataset){
+		
+		JFreeChart chart = ChartFactory.createBarChart( "Métaux", "", "Masses (g)", dataset, PlotOrientation.VERTICAL, true, true, false);
+		return chart;
+		
+	}
+	
+	private JFreeChart createChartConcentration(CategoryDataset dataset){
+		
+		JFreeChart chart = ChartFactory.createBarChart( "Solutions", "", "Concentration Massique (g/L)", dataset, PlotOrientation.VERTICAL, true, true, false);
 		return chart;
 		
 	}
@@ -192,8 +249,23 @@ public class CircuitFerme extends JPanel{
 		chartPanel.removeAll();
 		datasetMasse = createDatasetMasse(initial);
 		datasetconcentration = createDatasetConcentration(initial);
-		chartMasse = createChart(datasetMasse);
-		chartConcentration = createChart(datasetconcentration);
+		chartMasse = createChartMasse(datasetMasse);
+		chartConcentration = createChartConcentration(datasetconcentration);
+		cPanelConcentration.setChart(chartConcentration);
+		cPanelMasse.setChart(chartMasse);
+		chartPanel.add(cPanelMasse);
+		chartPanel.add(cPanelConcentration);	
+		tempsTotalLabel.setText("Temps total de réaction : "+tempsTotal+" s");
+		tempsTotalLabelconv.setText(conversionSecHeure(tempsTotal));
+		
+	}
+	
+	public void refreshChartTempsT(){
+		chartPanel.removeAll();
+		datasetMasse = createDatasetMasseTempsT();
+		datasetconcentration = createDatasetConcentrationTempsT();
+		chartMasse = createChartMasse(datasetMasse);
+		chartConcentration = createChartConcentration(datasetconcentration);
 		cPanelConcentration.setChart(chartConcentration);
 		cPanelMasse.setChart(chartMasse);
 		chartPanel.add(cPanelMasse);

@@ -24,13 +24,16 @@ public class AccueilScreen extends JFrame {
 	protected static AccueilScreen instance;
 	protected SchemaMontage schmMont;
 	protected CircuitFerme circuitferme;
+	protected CircuitFermeOption opt;
+	protected ValeursCircuitFerme val;
+	
 	
 	public AccueilScreen(String titre, int width, int height){
 		super(titre);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(width,height);
 		
-
+		instance = this;
 		contentPane = getContentPane();
 		
 		
@@ -93,6 +96,8 @@ public class AccueilScreen extends JFrame {
 			public void actionPerformed(ActionEvent e){
 				contentPane.removeAll();
 				contentPane.add(circuitferme);
+				opt = new CircuitFermeOption("Options",450,350);
+				val = new ValeursCircuitFerme("Valeurs",600,350);
 				contentPane.repaint();
 				contentPane.revalidate();
 			}
@@ -111,7 +116,6 @@ public class AccueilScreen extends JFrame {
 		
 		this.setVisible(true);
 		
-		instance = this;
 		schmMont = new SchemaMontage();
 
 	}

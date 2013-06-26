@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 public class SchemaMontage extends JPanel {
 	
 	BufferedImage img;
-	JLabel metal1, metal2, solution1, solution2, concentration1, concentration2, Tension, plus, moins, fHaut, fBas, fGauche, fDroit, bfDroit, bfGauche, electron;
+	JLabel metal1, metal2, solution1, solution2, concentration1, concentration2, Tension, plus, moins, fHaut, fBas, fGauche, fDroit, bfDroit, bfGauche, electron, anode, cathode;
 	
 	boolean alreadyOn = false;
 	
@@ -48,13 +48,18 @@ public class SchemaMontage extends JPanel {
 		concentration1.setBounds(250,550,200,20);
 		concentration2 = new JLabel(MetauxCaract.concentrationsMolairesAff[AccueilScreen.GetInstance().pageChoix.concentration2Choisis]);
 		concentration2.setBounds(620,550,200,20);
+		anode = new JLabel("Anode");
+		anode.setVisible(false);
+		cathode = new JLabel("Cathode");
+		cathode.setVisible(false);
 		this.add(metal1);
 		this.add(metal2);
 		this.add(solution1);
 		this.add(solution2);
 		this.add(concentration1);
 		this.add(concentration2);
-		
+		this.add(anode);
+		this.add(cathode);
 		
 		//Boutons
 		JButton retour = new JButton("Retour");
@@ -144,6 +149,8 @@ public class SchemaMontage extends JPanel {
 		bfGauche.setVisible(false);
 		bfDroit.setVisible(false);
 		electron.setVisible(false);
+		anode.setVisible(false);
+		cathode.setVisible(false);
 		alreadyOn = false;
 		
 		Tension.setText("  " + Calculs.calculDDP(potentiel1, potentiel2)+ " V");
@@ -158,6 +165,8 @@ public class SchemaMontage extends JPanel {
 				fDroit.setBounds(370, 252, 50, 50);
 				fBas.setBounds(579, 280, 50, 50);
 				fHaut.setBounds(333, 280, 50, 50);
+				anode.setBounds(630,270,200,20);
+				cathode.setBounds(290,260,200,20);
 				plus.setVisible(true);
 				moins.setVisible(true);
 				fDroit.setVisible(true);
@@ -165,6 +174,8 @@ public class SchemaMontage extends JPanel {
 				fHaut.setVisible(true);
 				bfGauche.setVisible(true);
 				electron.setVisible(true);
+				anode.setVisible(true);
+				cathode.setVisible(true);
 				alreadyOn = true;
 	
 			}else if(Calculs.calculDDP(potentiel1, potentiel2)>0){
@@ -173,7 +184,8 @@ public class SchemaMontage extends JPanel {
 				fGauche.setBounds(370, 252, 50, 50);
 				fBas.setBounds(333, 280, 50, 50);
 				fHaut.setBounds(579, 280, 50, 50);
-				
+				cathode.setBounds(630,260,200,20);
+				anode.setBounds(290,270,200,20);
 				plus.setVisible(true);
 				moins.setVisible(true);
 				fGauche.setVisible(true);
@@ -181,6 +193,8 @@ public class SchemaMontage extends JPanel {
 				fHaut.setVisible(true);
 				bfDroit.setVisible(true);
 				electron.setVisible(true);
+				anode.setVisible(true);
+				cathode.setVisible(true);
 				
 				alreadyOn = true;
 				
@@ -195,6 +209,8 @@ public class SchemaMontage extends JPanel {
 			bfGauche.setVisible(false);
 			bfDroit.setVisible(false);
 			electron.setVisible(false);
+			anode.setVisible(false);
+			cathode.setVisible(false);
 			alreadyOn = false;
 		}
 		
