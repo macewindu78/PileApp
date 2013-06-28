@@ -45,7 +45,7 @@ public class CircuitFermeOption extends JFrame {
 		metal1.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				AccueilScreen.GetInstance().circuitferme.metal1 = metal1.getSelectedIndex();
-				//System.out.println(metal1Choisis);
+				
 			}
 		});
 		
@@ -54,7 +54,7 @@ public class CircuitFermeOption extends JFrame {
 		metal2.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				AccueilScreen.GetInstance().circuitferme.metal2 = metal2.getSelectedIndex();
-				//System.out.println(metal2Choisis);
+			
 			}
 		});
 		
@@ -63,7 +63,7 @@ public class CircuitFermeOption extends JFrame {
 		concentration1.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				AccueilScreen.GetInstance().circuitferme.concentrationMolaire1 = concentration1.getSelectedIndex();
-				//System.out.println(concentration1Choisis);
+			
 			}
 		});
 		concentration2 = new JComboBox(MetauxCaract.concentrationsMolairesAff);
@@ -71,7 +71,6 @@ public class CircuitFermeOption extends JFrame {
 		concentration2.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				AccueilScreen.GetInstance().circuitferme.concentrationMolaire2 = concentration2.getSelectedIndex();
-				//System.out.println(concentration2Choisis);
 			}
 		});
 		

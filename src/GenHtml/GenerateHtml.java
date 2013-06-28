@@ -39,16 +39,13 @@ public class GenerateHtml {
 		content = content.replace("[wikipediaFr]", ParseJson.wikipediaFr);
 		content = content.replace("[wikipediaEn]", ParseJson.wikipediaEn);
 		 
-		System.out.println(content);
+		//System.out.println(content);
 		 
 		 try{
 			String path = Test.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-			System.out.println(path);
-			System.out.println(path.lastIndexOf("/"));
 			if(!Test.eclipse){
 				path = path.substring(0, path.lastIndexOf("."));
 			}
-			System.out.println(path);
 			OutputStream ou = new FileOutputStream(path+"html/contenu/"+wantedAtom+".html");
 			OutputStreamWriter osw = new OutputStreamWriter(ou,"UTF-8");
 			BufferedWriter bw = new BufferedWriter(osw);

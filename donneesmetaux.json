@@ -44,7 +44,7 @@
 				"universe":"String",
 				"InChIKey" : "XAGFODPZIPBFFR-UHFFFAOYSA-N",
 				"wikipedia" : {
-									"frenchValue" : "fr.wikipedia.org/wiki/Aluminium",
+									"frenchValue" : "http://fr.wikipedia.org/wiki/Aluminium",
 									"englishValue" : "http://en.wikipedia.org/wiki/Aluminium"
 									}
 			}
@@ -67,7 +67,7 @@
 				"universe" : "String",
 				"InChIKey" : "RYGMFSIKBFXOCR-UHFFFAOYSA-N",
 				"wikipedia" : {
-									"frenchValue" : "fr.wikipedia.org/wiki/Cuivre",
+									"frenchValue" : "http://fr.wikipedia.org/wiki/Cuivre",
 									"englishValue" : "http://en.wikipedia.org/wiki/Copper"
 									}
 			}
@@ -90,8 +90,8 @@
 				"universe": "String",
 				"InChIKey" : "XEEYBQQBJWHFJM-UHFFFAOYSA-N",
 				"wikipedia" : {
-									"frenchValue" : "fr.wikipedia.org/wiki/Fer",
-									"englishValue" : "en.wikipedia.org/wiki/iron"
+									"frenchValue" : "http://fr.wikipedia.org/wiki/Fer",
+									"englishValue" : "http://en.wikipedia.org/wiki/iron"
 									}
 			}
 		},

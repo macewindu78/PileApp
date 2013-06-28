@@ -135,14 +135,14 @@ public class ChoixCaract extends JPanel {
 				
 				try {
 					String path = Test.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-					System.out.println(path);
-					System.out.println(path.lastIndexOf("/"));
+					//System.out.println(path);
+					//System.out.println(path.lastIndexOf("/"));
 					if(!Test.eclipse){
 						path = path.substring(0, path.lastIndexOf("."));
 					}
-					System.out.println(path);
+					//System.out.println(path);
 					File jc2 = new File(path+"html/Index.html");
-					System.out.println(jc2);
+					//System.out.println(jc2);
 					Desktop.getDesktop().browse(jc2.toURI());
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block

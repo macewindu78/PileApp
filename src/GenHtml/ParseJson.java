@@ -29,16 +29,16 @@ public class ParseJson{
 
 			
 			jsonFile = new JSONObject(inputStreamString);
-			System.out.println(jsonFile);
+			//System.out.println(jsonFile);
 			jdata = jsonFile.getJSONArray("data");
 			version = jsonFile.getString("version");
-			System.out.println(version);
+			//System.out.println(version);
 			date = jsonFile.getString("date");
-			System.out.println(date);
+			//System.out.println(date);
 			for(int i = 0; i < jdata.length() ; i++){
 				atome = jdata.getJSONObject(i);
 				name = atome.getString("name");
-				System.out.println(name);
+				//System.out.println(name);
 				if(name.equals(wantedAtom)){
 					break;
 				}
