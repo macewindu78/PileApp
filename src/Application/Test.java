@@ -15,7 +15,7 @@ public class Test {
 
 	
 	
-	public static boolean eclipse = false;
+	public static boolean eclipse = true;
 	
 	
 	/**

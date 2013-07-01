@@ -36,7 +36,7 @@ public class CircuitFermeOption extends JFrame {
 		titlePan.add(title);
 			
 		
-		
+		Integer init = 5;
 		
 		contentPane = getContentPane();
 
@@ -75,18 +75,24 @@ public class CircuitFermeOption extends JFrame {
 		});
 		
 		masse1 = new JFormattedTextField(NumberFormat.getIntegerInstance());
+		masse1.setValue(init);
 		masse1.setPreferredSize(new Dimension(100,20));
 		
 		masse2 = new JFormattedTextField(NumberFormat.getIntegerInstance());
+		masse2.setValue(init);
 		masse2.setPreferredSize(new Dimension(100,20));
 		
 		volume1 = new JFormattedTextField(NumberFormat.getIntegerInstance());
+		volume1.setValue(init);
 		volume1.setPreferredSize(new Dimension(100,20));
 		
 		volume2 = new JFormattedTextField(NumberFormat.getIntegerInstance());
+		volume2.setValue(init);
 		volume2.setPreferredSize(new Dimension(100,20));
 		
+		
 		resistance = new JFormattedTextField(NumberFormat.getIntegerInstance());
+		resistance.setValue(init);
 		resistance.setPreferredSize(new Dimension(100,20));
 		
 		

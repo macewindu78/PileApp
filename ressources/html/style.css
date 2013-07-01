@@ -1,6 +1,6 @@
 body
 {
-    background-color: white; /* Le fond de la page sera noir */
+    background-color: rgb(190,200,200);
 }
 
 p
@@ -8,13 +8,62 @@ p
 	margin : 14px;
     color: black;
 	font-size : 14px;
+	line-height: 20px;
+}
+a 
+{
+	color:black;
+
 }
 
 h1
 {
-	color : blue;
-    font-size: 40px;  /* Titres de 40 pixels */
+	color : grey;
+    font-size: 40px;
 	text-align : center;
+	margin-bottom:50px;
 }
 
 
+/* Contenu de la page*/
+section
+{
+
+}
+
+nav,article
+{
+	
+}
+
+/*Navigation*/
+nav
+{
+
+}
+
+nav ul
+{
+	list-style-type: none;
+	text-align: left;
+	width:100px;
+}
+
+nav li
+{
+	list-style-type: none;
+	text-align: left;
+}
+
+/*Contenu*/
+div#menu_left {
+	background-color: rgb(110,125,125);
+	float:left;
+	padding: 10px;
+	border-radius:5px 5px 5px 5px;
+	margin-right:150px;
+}
+div#page {
+	width:800px;
+	margin:auto;
+}

@@ -80,7 +80,7 @@ public class AccueilScreen extends JFrame {
 		/**
 		 * Buttons on the front page
 		 */
-		JButton college = new JButton("College");
+		JButton college = new JButton("Circuit Ouvert");
 		college.setSize(width/2, height/4);
 		college.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -91,7 +91,7 @@ public class AccueilScreen extends JFrame {
 			}
 		});
 		
-		JButton lycee = new JButton("Lycée");
+		JButton lycee = new JButton("Circuit Fermé");
 		lycee.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				contentPane.removeAll();

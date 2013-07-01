@@ -2,17 +2,21 @@ package Application;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.InvocationTargetException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -25,16 +29,16 @@ public class CircuitFerme extends JPanel{
 
 	int metal1 =0, metal2 =1, concentrationMolaire1=0, concentrationMolaire2=1;
 	float volume1 =1, volume2 =1,  masse1 =1,  masse2 = 1,  R =1, avancementFinal, concentrationfinale1, concentrationfinale2, masseFinale1, masseFinale2, avancementTempsT, tempsT=0,concentration1TempsT, concentration2TempsT, masse1TempsT, masse2TempsT, ddp, tempsTotal=0, massevol1finale,massevol2finale, massevol1TempsT, massevol2TempsT;
-	JLabel tempsTotalLabel, tempsTLabel, tempsTotalLabelconv, tempsTLabelconv;
-	JPanel chartPanel;
+	JLabel tempsTotalLabel, tempsTLabel, tempsTotalLabelconv, tempsTLabelconv, pileImg;
+	JPanel chartPanel, ouest;
 	JFreeChart chartMasse, chartConcentration;
 	ChartPanel cPanelMasse, cPanelConcentration ;
 	CategoryDataset datasetMasse, datasetconcentration;
 	boolean initial = true;
 	protected String[] fonctionTempsPourcent = {"0%","10%" , "20%", "30%" , "40%", "50%", "60%", "70%", "80%","90%", "100%"};
 	JComboBox fonctionTemps;
-	JButton EtatfinalInit;
-
+	JButton EtatfinalInit, animation;
+	JLabel[] piles;
 	
 	
 	
@@ -123,8 +127,8 @@ public class CircuitFerme extends JPanel{
 				tempsTLabel.setText("Temps t : "+ tempsT + " s");
 				tempsTLabelconv.setText(conversionSecHeure(tempsT));
 				repaint();
-				System.out.println(tempsT);
-				System.out.println(avancementTempsT);
+				//System.out.println(tempsT);
+				//System.out.println(avancementTempsT);
 			}
 		});
 		
@@ -132,10 +136,20 @@ public class CircuitFerme extends JPanel{
 		tempsTLabel.setAlignmentX(CENTER_ALIGNMENT);
 		
 		tempsTLabelconv = new JLabel(conversionSecHeure(tempsT));
-		tempsTLabelconv.setAlignmentX(CENTER_ALIGNMENT);
-
+		tempsTLabelconv.setAlignmentX(CENTER_ALIGNMENT);		
 		
-		JPanel ouest = new JPanel();
+		
+		animation = new JButton("Animation");
+		animation.setAlignmentX(CENTER_ALIGNMENT);
+		animation.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				
+				timer();
+			}
+		});
+		
+		
+		ouest = new JPanel();
 		ouest.setLayout(new BoxLayout(ouest, BoxLayout.Y_AXIS));
 		ouest.add(EtatfinalInit);
 		ouest.add(tempsTotalLabel);
@@ -143,6 +157,18 @@ public class CircuitFerme extends JPanel{
 		ouest.add(fonctionTemps);
 		ouest.add(tempsTLabel);
 		ouest.add(tempsTLabelconv);
+		
+		
+		piles = new JLabel[11];
+		for(int i=0; i<11;i++){
+			createAffpile(i);
+		}
+		
+		
+		ouest.add(animation);
+		
+		
+		
 
 		this.add(titlePan, BorderLayout.NORTH);
 		
@@ -159,6 +185,38 @@ public class CircuitFerme extends JPanel{
 		massevol1TempsT = concentration1TempsT * MetauxCaract.massesMolaires[metal1];
 		massevol2TempsT = concentration2TempsT * MetauxCaract.massesMolaires[metal2];
 	}
+	
+	
+	
+	public void timer(){
+		Timer tim = new Timer();
+		tim.scheduleAtFixedRate(new TimerTask(){
+			int i=0;			
+			@Override
+			public void run() {
+				try {
+					SwingUtilities.invokeAndWait(new Runnable(){
+
+						@Override
+						public void run() {
+							// TODO Auto-generated method stub
+							fonctionTemps.setSelectedIndex(i);
+							i++;				
+						}});
+				} catch (InvocationTargetException | InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				if(i>10){
+					this.cancel();
+				}	
+
+			}
+		}, 0, 1*1000);
+		
+		
+	}
+	
 	
 	
 	
@@ -269,7 +327,26 @@ public class CircuitFerme extends JPanel{
 		cPanelConcentration.setChart(chartConcentration);
 		cPanelMasse.setChart(chartMasse);
 		chartPanel.add(cPanelMasse);
-		chartPanel.add(cPanelConcentration);		
+		chartPanel.add(cPanelConcentration);	
+		int temps = fonctionTemps.getSelectedIndex();
+		for(int i=0; i<piles.length;i++){
+			piles[i].setVisible(false);
+		}
+		piles[temps].setVisible(true);
+	}
+	
+	public void createAffpile(int i){
+		int j=10-i;
+		pileImg =new JLabel(new ImageIcon(getClass().getResource("/Imgs/pile"+Integer.toString(j)+"0.png")));
+		pileImg.setAlignmentX(CENTER_ALIGNMENT);
+		pileImg.setDoubleBuffered(true);
+		if(i==0){
+			pileImg.setVisible(true);
+		}else{
+			pileImg.setVisible(false);
+		}
+		piles[i] = pileImg;
+		ouest.add(pileImg);
 	}
 
 }
