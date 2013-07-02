@@ -61,7 +61,7 @@ div#menu_left {
 	float:left;
 	padding: 10px;
 	border-radius:5px 5px 5px 5px;
-	margin-right:150px;
+	margin-right:70px;
 }
 div#page {
 	width:800px;
@@ -70,4 +70,5 @@ div#page {
 th {
 	width:190px;
 	padding:5px;
+	vertical-align: top;
 }

@@ -15,7 +15,7 @@ public class Test {
 
 	
 	
-	public static boolean eclipse = false;
+	public static boolean eclipse = true;
 	
 	
 	/**
@@ -37,7 +37,7 @@ public class Test {
 			ghtml.GenHtml(ParseJson.getFrenchName());
 		}
 
-		AccueilScreen win = new AccueilScreen("Piles electro-chimiques",1000,700);
+		AccueilScreen win = new AccueilScreen("Piles électrochimiques",1000,700);
 	}
 
 }

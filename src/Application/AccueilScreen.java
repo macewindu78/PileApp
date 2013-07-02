@@ -4,6 +4,7 @@ package Application;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -74,9 +75,17 @@ public class AccueilScreen extends JFrame {
 		mBar.add(File);
 		setJMenuBar(mBar);
 		
+		
+		
+		JPanel titlePan = new JPanel();
+		JLabel title = new JLabel("Piles électrochimiques");
+		title.setFont(new Font("Arial", Font.PLAIN, 20 ));
+		titlePan.add(title);
+		
+		
 		accueilPan = new JPanel();
 		
-		accueilPan.setLayout(new GridLayout(2,1,100,height/4));
+		accueilPan.setLayout(new GridLayout(2,1,100,10));
 		
 		/**
 		 * Buttons on the front page
@@ -109,6 +118,7 @@ public class AccueilScreen extends JFrame {
 		accueilPan.add(college);
 		accueilPan.add(lycee);
 		
+		gPan.add(titlePan, BorderLayout.NORTH);
 		gPan.add(accueilPan,BorderLayout.CENTER);
 				
 		contentPane.add(gPan);
