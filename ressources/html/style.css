@@ -67,3 +67,7 @@ div#page {
 	width:800px;
 	margin:auto;
 }
+th {
+	width:190px;
+	padding:5px;
+}

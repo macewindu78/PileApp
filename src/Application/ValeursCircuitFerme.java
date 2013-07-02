@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 public class ValeursCircuitFerme extends JFrame{
 	
 	
-	JLabel metal1Label, metal2Label, solution1Label, solution2Label, concentration1Label, concentration2Label, volume1Label, volume2Label, masse1Label, masse2Label, RLabel, avancementFinalLabel, concentrationfinale1Label, concentrationfinale2Label, masseFinale1Label, masseFinale2Label;
+	JLabel metal1Label, metal2Label, solution1Label, solution2Label, concentration1Label, concentration2Label, volume1Label, volume2Label, masse1Label, masse2Label, RLabel, avancementFinalLabel, concentrationfinale1Label, concentrationfinale2Label, masseFinale1Label, masseFinale2Label, avancementTempsTLabel, concentration1TempsTLabel, concentration2TempsTLabel, masse1TempsTLabel,	masse2TempsTLabel, empty;
 	public ValeursCircuitFerme(String titre, int width, int height){
 		super(titre);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -30,6 +30,17 @@ public class ValeursCircuitFerme extends JFrame{
 		volume2Label = new JLabel("Volume solution 2 : "+AccueilScreen.GetInstance().circuitferme.volume2+" mL");
 		
 		RLabel = new JLabel("Resistance : "+AccueilScreen.GetInstance().circuitferme.R+ " Ohm");
+		
+		empty = new JLabel("");
+		
+		avancementTempsTLabel = new JLabel("Avancement temps T : "+AccueilScreen.GetInstance().circuitferme.avancementTempsT);
+		concentration1TempsTLabel = new JLabel("concentration 1 temps T : "+AccueilScreen.GetInstance().circuitferme.concentration1TempsT);
+		concentration2TempsTLabel = new JLabel("concentration 2 temps T : "+AccueilScreen.GetInstance().circuitferme.concentration2TempsT);
+		masse1TempsTLabel = new JLabel("masse 1 temps T : "+AccueilScreen.GetInstance().circuitferme.masse1TempsT);
+		masse2TempsTLabel = new JLabel("masse 2 temps T : "+AccueilScreen.GetInstance().circuitferme.masse2TempsT);
+		
+		
+		
 		avancementFinalLabel = new JLabel("Avancement final : "+AccueilScreen.GetInstance().circuitferme.avancementFinal);
 		concentrationfinale1Label = new JLabel("concentration 1 finale : "+AccueilScreen.GetInstance().circuitferme.concentrationfinale1);
 		concentrationfinale2Label = new JLabel("concentration 2 finale : "+AccueilScreen.GetInstance().circuitferme.concentrationfinale2);
@@ -49,7 +60,17 @@ public class ValeursCircuitFerme extends JFrame{
 		TestVals.add(volume2Label);
 			
 		TestVals.add(RLabel);
+		TestVals.add(empty);
+		
+		TestVals.add(avancementTempsTLabel);
 		TestVals.add(avancementFinalLabel);
+		
+		TestVals.add(concentration1TempsTLabel);
+		TestVals.add(concentration2TempsTLabel);
+		TestVals.add(masse1TempsTLabel);
+		TestVals.add(masse2TempsTLabel);
+		
+		
 		TestVals.add(concentrationfinale1Label);
 		TestVals.add(concentrationfinale2Label);
 		TestVals.add(masseFinale1Label);
@@ -75,6 +96,11 @@ public class ValeursCircuitFerme extends JFrame{
 		concentration2Label.setText("Concentration "+MetauxCaract.solutions[AccueilScreen.GetInstance().circuitferme.metal2]+ " :"+MetauxCaract.concentrationsMolairesAff[AccueilScreen.GetInstance().circuitferme.concentrationMolaire2]);
 		volume2Label.setText("Volume "+MetauxCaract.solutions[AccueilScreen.GetInstance().circuitferme.metal2]+ " :"+AccueilScreen.GetInstance().circuitferme.volume2+" mL");
 		RLabel.setText("Résistance : "+AccueilScreen.GetInstance().circuitferme.R+ " Ohm");
+		avancementTempsTLabel.setText("Avancement temps T : "+AccueilScreen.GetInstance().circuitferme.avancementTempsT);
+		concentration1TempsTLabel.setText("concentration temps T : "+AccueilScreen.GetInstance().circuitferme.concentration1TempsT+" g/L");
+		concentration2TempsTLabel.setText("concentration temps T : "+AccueilScreen.GetInstance().circuitferme.concentration2TempsT+" g/L");
+		masse1TempsTLabel.setText("masse temps T "+MetauxCaract.metaux[AccueilScreen.GetInstance().circuitferme.metal1]+" : "+AccueilScreen.GetInstance().circuitferme.masse1TempsT+" g");
+		masse2TempsTLabel.setText("masse temps T "+MetauxCaract.metaux[AccueilScreen.GetInstance().circuitferme.metal2]+" : "+AccueilScreen.GetInstance().circuitferme.masse2TempsT+" g");
 		avancementFinalLabel.setText("Avancement final : "+AccueilScreen.GetInstance().circuitferme.avancementFinal);
 		concentrationfinale1Label.setText("concentration finale : "+AccueilScreen.GetInstance().circuitferme.massevol1finale+" g/L");
 		concentrationfinale2Label.setText("concentration finale : "+AccueilScreen.GetInstance().circuitferme.massevol2finale+" g/L");

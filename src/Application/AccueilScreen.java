@@ -26,6 +26,7 @@ public class AccueilScreen extends JFrame {
 	protected CircuitFerme circuitferme;
 	protected CircuitFermeOption opt;
 	protected ValeursCircuitFerme val;
+	protected SchemaFerme schemaferme;
 	
 	
 	public AccueilScreen(String titre, int width, int height){
@@ -40,7 +41,7 @@ public class AccueilScreen extends JFrame {
 		//init page choix caract
 		pageChoix = new ChoixCaract();
 		circuitferme = new CircuitFerme();
-		
+		schemaferme = new SchemaFerme();
 		
 		gPan = new JPanel();
 		gPan.setLayout(new BorderLayout(10,10));
@@ -48,7 +49,7 @@ public class AccueilScreen extends JFrame {
 		//Menu bar
 		mBar = new JMenuBar();
 		
-		JMenu File = new JMenu("File");
+		JMenu File = new JMenu("Menu");
 		JMenuItem Accueil = new JMenuItem("Accueil");
 		Accueil.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -80,7 +81,7 @@ public class AccueilScreen extends JFrame {
 		/**
 		 * Buttons on the front page
 		 */
-		JButton college = new JButton("Circuit Ouvert");
+		JButton college = new JButton("Pile à l'état initial (pile neuve)");
 		college.setSize(width/2, height/4);
 		college.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -91,7 +92,7 @@ public class AccueilScreen extends JFrame {
 			}
 		});
 		
-		JButton lycee = new JButton("Circuit Fermé");
+		JButton lycee = new JButton("Etude de la décharge de piles");
 		lycee.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				contentPane.removeAll();

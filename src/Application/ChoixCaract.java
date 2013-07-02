@@ -129,7 +129,7 @@ public class ChoixCaract extends JPanel {
 		
 		JPanel otherButtons = new JPanel();
 		otherButtons.setLayout(new BorderLayout());
-		JButton InfoHelp = new JButton("Aide");
+		JButton InfoHelp = new JButton("Informations");
 		InfoHelp.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				

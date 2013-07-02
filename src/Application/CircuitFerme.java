@@ -28,7 +28,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class CircuitFerme extends JPanel{
 
 	int metal1 =0, metal2 =1, concentrationMolaire1=0, concentrationMolaire2=1;
-	float volume1 =1, volume2 =1,  masse1 =1,  masse2 = 1,  R =1, avancementFinal, concentrationfinale1, concentrationfinale2, masseFinale1, masseFinale2, avancementTempsT, tempsT=0,concentration1TempsT, concentration2TempsT, masse1TempsT, masse2TempsT, ddp, tempsTotal=0, massevol1finale,massevol2finale, massevol1TempsT, massevol2TempsT;
+	float volume1 =1, volume2 =1,  masse1 =1,  masse2 = 1,  R =1, avancementFinal, concentrationfinale1, concentrationfinale2, masseFinale1, masseFinale2, avancementTempsT =0, tempsT=0,concentration1TempsT, concentration2TempsT, masse1TempsT, masse2TempsT, ddp, tempsTotal=0, massevol1finale,massevol2finale, massevol1TempsT, massevol2TempsT;
 	JLabel tempsTotalLabel, tempsTLabel, tempsTotalLabelconv, tempsTLabelconv, pileImg;
 	JPanel chartPanel, ouest;
 	JFreeChart chartMasse, chartConcentration;
@@ -37,7 +37,7 @@ public class CircuitFerme extends JPanel{
 	boolean initial = true;
 	protected String[] fonctionTempsPourcent = {"0%","10%" , "20%", "30%" , "40%", "50%", "60%", "70%", "80%","90%", "100%"};
 	JComboBox fonctionTemps;
-	JButton EtatfinalInit, animation;
+	JButton EtatfinalInit, animation, schema;
 	JLabel[] piles;
 	
 	
@@ -53,7 +53,7 @@ public class CircuitFerme extends JPanel{
 		titlePan.add(title);
 
 		
-		JButton Option = new JButton("Options");
+		JButton Option = new JButton("Paramètres");
 		Option.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				AccueilScreen.GetInstance().opt.setVisible(true);
@@ -67,8 +67,20 @@ public class CircuitFerme extends JPanel{
 			}
 		});
 		
+		schema = new JButton("Schéma");
+		schema.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				AccueilScreen.GetInstance().contentPane.removeAll();
+				AccueilScreen.GetInstance().schemaferme.upDateAffich();
+				AccueilScreen.GetInstance().contentPane.add(AccueilScreen.GetInstance().schemaferme);
+				AccueilScreen.GetInstance().contentPane.repaint();
+				AccueilScreen.GetInstance().contentPane.revalidate();
+			}
+		});
+		
 		
 		JPanel south = new JPanel();
+		south.add(schema);
 		south.add(Option);
 		south.add(valeurs);
 		
@@ -126,7 +138,9 @@ public class CircuitFerme extends JPanel{
 				refreshChartTempsT();
 				tempsTLabel.setText("Temps t : "+ tempsT + " s");
 				tempsTLabelconv.setText(conversionSecHeure(tempsT));
+				AccueilScreen.GetInstance().val.repaintAffich();
 				repaint();
+				
 				//System.out.println(tempsT);
 				//System.out.println(avancementTempsT);
 			}
@@ -265,11 +279,11 @@ public class CircuitFerme extends JPanel{
 		
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		if(initial){
-			dataset.addValue(MetauxCaract.concentrationsMolaires[concentrationMolaire1]* MetauxCaract.massesMolaires[metal1], MetauxCaract.solutions[metal1], "g/L");
-			dataset.addValue(MetauxCaract.concentrationsMolaires[concentrationMolaire2]* MetauxCaract.massesMolaires[metal2], MetauxCaract.solutions[metal2], "g/L");
+			dataset.addValue(MetauxCaract.concentrationsMolaires[concentrationMolaire1]* MetauxCaract.massesMolaires[metal1], MetauxCaract.ions[metal1], "g/L");
+			dataset.addValue(MetauxCaract.concentrationsMolaires[concentrationMolaire2]* MetauxCaract.massesMolaires[metal2], MetauxCaract.ions[metal2], "g/L");
 		}else{
-			dataset.addValue(massevol1finale, MetauxCaract.solutions[metal1], "mol/L");
-			dataset.addValue(massevol2finale, MetauxCaract.solutions[metal2], "mol/L");
+			dataset.addValue(massevol1finale, MetauxCaract.ions[metal1], "mol/L");
+			dataset.addValue(massevol2finale, MetauxCaract.ions[metal2], "mol/L");
 
 		}
 		
@@ -280,8 +294,8 @@ public class CircuitFerme extends JPanel{
 		
 		conversionAffich();
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-			dataset.addValue(massevol1TempsT, MetauxCaract.solutions[metal1],"g");
-			dataset.addValue(massevol2TempsT, MetauxCaract.solutions[metal2],"g");
+			dataset.addValue(massevol1TempsT, MetauxCaract.ions[metal1],"g/L");
+			dataset.addValue(massevol2TempsT, MetauxCaract.ions[metal2],"g/L");
 
 		
 		return dataset;

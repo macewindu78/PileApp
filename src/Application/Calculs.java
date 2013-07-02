@@ -25,7 +25,14 @@ public class Calculs {
 		
 		return dDP;
 	}
-
+	
+	public static float calculCourant(float ddp, float R){
+		float courant;
+		
+		courant = ddp/R;
+				
+		return courant;
+	}
 	
 	
 	
@@ -84,6 +91,7 @@ public class Calculs {
 		}else{
 			AccueilScreen.GetInstance().circuitferme.tempsTotal = tempsReaction2;
 		}
+		
 		tempsTotal = AccueilScreen.GetInstance().circuitferme.tempsTotal;
 		AccueilScreen.GetInstance().circuitferme.avancementFinal = Math.abs(ddp)*tempsTotal/(R*f*nbElectronEchange);
 		
@@ -119,8 +127,16 @@ public class Calculs {
 	
 	public static float calculReactTempsT(float temps,float ddp){
 		float avancement;
+		int nbElectronEchange = 0;
+		int nbrElectronsEchanges1 = MetauxCaract.nbreElctronsEchanges[AccueilScreen.GetInstance().circuitferme.metal1],nbrElectronsEchanges2 = MetauxCaract.nbreElctronsEchanges[AccueilScreen.GetInstance().circuitferme.metal2];
+		if(nbrElectronsEchanges1==nbrElectronsEchanges2){
+			nbElectronEchange = nbrElectronsEchanges1;
+		}
+		else{
+			nbElectronEchange = nbrElectronsEchanges1*nbrElectronsEchanges2;
+		}
 		
-		avancement = Math.abs(ddp)*temps/(AccueilScreen.GetInstance().circuitferme.R*MetauxCaract.faraday*MetauxCaract.nbreElctronsEchanges[AccueilScreen.GetInstance().circuitferme.metal1]*MetauxCaract.nbreElctronsEchanges[AccueilScreen.GetInstance().circuitferme.metal2]);
+		avancement = Math.abs(ddp)*temps/(AccueilScreen.GetInstance().circuitferme.R*MetauxCaract.faraday*nbElectronEchange);
 		
 		return avancement;
 	}
