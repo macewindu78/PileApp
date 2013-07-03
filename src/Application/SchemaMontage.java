@@ -75,59 +75,12 @@ public class SchemaMontage extends JPanel {
 		});
 		this.add(retour);
 		
-		JButton sensCourant = new JButton("Sens conventionnel du courant");
-		sensCourant.setBounds(743, 2, 250, 40);
-		sensCourant.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				affichSensCourant();
-				
-			}
-		});
-		this.add(sensCourant);
 		
 		Tension = new JLabel();
 		Tension.setBounds(480, 220, 90, 20);
 		Tension.setForeground(Color.blue);
 		Tension.setBorder(BorderFactory.createLineBorder(Color.black));
 		this.add(Tension);
-		
-		
-		plus = new JLabel(new ImageIcon(getClass().getResource("/Imgs/plus.png")));
-		plus.setBounds(290, 280, 50, 50);
-		this.add(plus);
-		
-		moins = new JLabel(new ImageIcon(getClass().getResource("/Imgs/moins.png")));
-		moins.setBounds(630, 280, 50, 50);
-		this.add(moins);
-		
-		
-		fGauche = new JLabel(new ImageIcon(getClass().getResource("/Imgs/flechegauche.png")));
-		fGauche.setBounds(290, 280, 50, 50);
-		this.add(fGauche);
-		
-		fDroit = new JLabel(new ImageIcon(getClass().getResource("/Imgs/flechedroite.png")));
-		fDroit.setBounds(370, 252, 50, 50);
-		this.add(fDroit);
-		
-		fBas = new JLabel(new ImageIcon(getClass().getResource("/Imgs/flechebas.png")));
-		fBas.setBounds(579, 280, 50, 50);
-		this.add(fBas);
-		
-		fHaut = new JLabel(new ImageIcon(getClass().getResource("/Imgs/flechehaut.png")));
-		fHaut.setBounds(333, 280, 50, 50);
-		this.add(fHaut);
-		
-		bfGauche = new JLabel(new ImageIcon(getClass().getResource("/Imgs/blackflechegauche.png")));
-		bfGauche.setBounds(530, 254, 50, 50);
-		this.add(bfGauche);
-		
-		bfDroit = new JLabel(new ImageIcon(getClass().getResource("/Imgs/blackflechedroite.png")));
-		bfDroit.setBounds(530, 254, 50, 50);
-		this.add(bfDroit);
-		
-		electron = new JLabel("e-");
-		electron.setBounds(540, 290, 50, 20);
-		this.add(electron);
 		
 	}
 	
@@ -140,83 +93,12 @@ public class SchemaMontage extends JPanel {
 		concentration2.setText(""+Calculs.calculConcentrationMassique(MetauxCaract.massesMolaires[AccueilScreen.GetInstance().pageChoix.metal2Choisis], MetauxCaract.concentrationsMolaires[AccueilScreen.GetInstance().pageChoix.concentration2Choisis])+ " g/L");
 		potentiel1 = Calculs.calculPotentiel(AccueilScreen.GetInstance().pageChoix.metal1Choisis, AccueilScreen.GetInstance().pageChoix.concentration1Choisis);
 		potentiel2 = Calculs.calculPotentiel(AccueilScreen.GetInstance().pageChoix.metal2Choisis, AccueilScreen.GetInstance().pageChoix.concentration2Choisis);
-		plus.setVisible(false);
-		moins.setVisible(false);
-		fDroit.setVisible(false);
-		fBas.setVisible(false);
-		fHaut.setVisible(false);
-		fGauche.setVisible(false);
-		bfGauche.setVisible(false);
-		bfDroit.setVisible(false);
-		electron.setVisible(false);
-		anode.setVisible(false);
-		cathode.setVisible(false);
-		alreadyOn = false;
 		
 		Tension.setText("  " + Calculs.calculDDP(potentiel1, potentiel2)+ " V");
 	}
 	
 	
-	public void affichSensCourant(){
-		if(alreadyOn==false){
-			if(Calculs.calculDDP(potentiel1, potentiel2)<0){	
-				plus.setBounds(290, 280, 50, 50);
-				moins.setBounds(630, 280, 50, 50);
-				fDroit.setBounds(370, 252, 50, 50);
-				fBas.setBounds(579, 280, 50, 50);
-				fHaut.setBounds(333, 280, 50, 50);
-				anode.setBounds(630,270,200,20);
-				cathode.setBounds(290,260,200,20);
-				plus.setVisible(true);
-				moins.setVisible(true);
-				fDroit.setVisible(true);
-				fBas.setVisible(true);
-				fHaut.setVisible(true);
-				bfGauche.setVisible(true);
-				electron.setVisible(true);
-				anode.setVisible(true);
-				cathode.setVisible(true);
-				alreadyOn = true;
-	
-			}else if(Calculs.calculDDP(potentiel1, potentiel2)>0){
-				plus.setBounds(630, 280, 50, 50);
-				moins.setBounds(290, 280, 50, 50);
-				fGauche.setBounds(370, 252, 50, 50);
-				fBas.setBounds(333, 280, 50, 50);
-				fHaut.setBounds(579, 280, 50, 50);
-				cathode.setBounds(630,260,200,20);
-				anode.setBounds(290,270,200,20);
-				plus.setVisible(true);
-				moins.setVisible(true);
-				fGauche.setVisible(true);
-				fBas.setVisible(true);
-				fHaut.setVisible(true);
-				bfDroit.setVisible(true);
-				electron.setVisible(true);
-				anode.setVisible(true);
-				cathode.setVisible(true);
-				
-				alreadyOn = true;
-				
-			}else{}
-		}else{
-			plus.setVisible(false);
-			moins.setVisible(false);
-			fDroit.setVisible(false);
-			fBas.setVisible(false);
-			fHaut.setVisible(false);
-			fGauche.setVisible(false);
-			bfGauche.setVisible(false);
-			bfDroit.setVisible(false);
-			electron.setVisible(false);
-			anode.setVisible(false);
-			cathode.setVisible(false);
-			alreadyOn = false;
-		}
-		
 
-		
-	}
 	
 	
 	@Override

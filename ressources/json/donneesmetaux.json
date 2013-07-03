@@ -15,7 +15,7 @@
 				"density" : "7.14 g.cm^(-3)"
 			},
 			"information":{
-				"use" :  "Metallurgistes Indiens 1000 ans av. J-C",
+				"use" :  "Le zinc est un métal de couleur bleu-gris, moyennement réactif, qui se combine avec l'oxygène et d'autres non-métaux, et qui réagit avec des acides dilués en dégageant de l'hydrogène.</br> Il est utilisé comme protection contre la corrosion des autres métaux. Mais aussi sous forme d'alliage pour la zinguerie et les pièces moulées dans l'industrie.",
 				"universe" : "String",
 				"InChIKey": "HCHKCACWOHOZIP-UHFFFAOYSA-N",
 				"wikipedia" : {
@@ -35,12 +35,12 @@
 				"frenchName" : "Aluminium",
 				"atomicNumber" :  "13",
 				"meltingPoint" : "933.47 K",
-				"boilingPoint" : "2792",
-				"atomicRadius" : "143",
-				"density" : "2.70"
+				"boilingPoint" : "2792 k",
+				"atomicRadius" : "143 pm",
+				"density" : "2.70 g.cm^(-3)"
 			},
 			"information":{
-				"use" : "En tonnage et en valeur, l’aluminium est le métal le plus utilisé après le fer, grâce à sa légèreté et sa bonne conductivité électrique et thermique. L’aluminium pur est mou et fragile, mais avec des petites quantités de cuivre, magnésium, manganèse, silicium et d’autres éléments, il peut former des alliages aux propriétés variées.",
+				"use" : "En tonnage et en valeur, l’aluminium est le métal le plus utilisé après le fer, grâce à sa légèreté et sa bonne conductivité électrique et thermique. L’aluminium pur est mou et fragile, mais avec des petites quantités de cuivre, magnésium, manganèse, silicium et d’autres éléments, il peut former des alliages aux propriétés variées.</br> Il est notamment utilisé dans les canettes de soda",
 				"universe":"String",
 				"InChIKey" : "XAGFODPZIPBFFR-UHFFFAOYSA-N",
 				"wikipedia" : {
@@ -57,13 +57,13 @@
 				"symbol" : " Cu",
 				"frenchName" : "Cuivre",
 				"atomicNumber" :  "29",
-				"meltingPoint" : "1357.77",
-				"boilingPoint" :  "2835",
-				"atomicRadius" : "128",
-				"density" : "8.96"
+				"meltingPoint" : "1357.77 K",
+				"boilingPoint" :  "2835 K",
+				"atomicRadius" : "128 pm",
+				"density" : "8.96 g.cm^(-3)"
 			},
 			"information":{
-				"use" : "Le cuivre est, avec l'or, le premier métal à avoir été utilisé par l'Homme parce qu'il fait partie des rares métaux qui se trouvent naturellement en tant que minéral pur, sous une forme native. En Europe occidentale, on situe l'âge du cuivre entre 3 200 et 2 000 environ av. J.-C. Cette période technologique est bien plus ancienne à l'est de la Méditerranée. Connu par certaines des plus anciennes civilisations, son usage remonte au moins à 10 000 ans. Des objets en cuivre datant de 8700 avant J.-C. ont été retrouvés au Moyen-Orient. C'est le cas d'un pendentif en cuivre retrouvé au nord de l’actuel Irak",
+				"use" : "Le cuivre est, avec l'or, le premier métal à avoir été utilisé par l'Homme parce qu'il fait partie des rares métaux qui se trouvent naturellement en tant que minéral pur, sous une forme native. En Europe occidentale, on situe l'âge du cuivre entre 3 200 et 2 000 environ av. J.-C. Cette période technologique est bien plus ancienne à l'est de la Méditerranée. Connu par certaines des plus anciennes civilisations, son usage remonte au moins à 10 000 ans. Des objets en cuivre datant de 8700 avant J.-C. ont été retrouvés au Moyen-Orient. C'est le cas d'un pendentif en cuivre retrouvé au nord de l’actuel Irak.</br> Il est utilisé pour les fils électriques, la plomberie,  les statues, les chaineau",
 				"universe" : "String",
 				"InChIKey" : "RYGMFSIKBFXOCR-UHFFFAOYSA-N",
 				"wikipedia" : {
@@ -80,13 +80,13 @@
 				"symbol" : "Fe",
 				"frenchName" : "Fer",
 				"atomicNumber" :  "26",
-				"meltingPoint" : "1811",
-				"boilingPoint" : "3134",
-				"atomicRadius" : "126",
-				"density" : "7.874"
+				"meltingPoint" : "1811 K",
+				"boilingPoint" : "3134 K",
+				"atomicRadius" : "126 pm",
+				"density" : "7.874 g.cm^(-3)"
 			},
 			"information":{
-				"use" : "Le fer n'est pratiquement pas utilisé à l'état pur. C'est le principal élément entrant dans la composition de l'acier. L'appellation fil de fer ne signifie en rien fil en fer pur, les fils de fer sont en fait fabriqués en acier doux, très malléable. Le fer métallique et ses oxydes sont utilisés depuis des décennies pour fixer des informations analogiques ou numériques sur des supports appropriés (bandes magnétiques, cassettes audio et vidéo, disquettes). L'usage de ces matériaux est cependant désormais supplanté par des composés possédant une meilleure permittivité, par exemple dans les disques durs.",
+				"use" : "Le fer n'est pratiquement pas utilisé à l'état pur. C'est le principal élément entrant dans la composition de l'acier. L'appellation fil de fer ne signifie en rien fil en fer pur, les fils de fer sont en fait fabriqués en acier doux, très malléable. Le fer métallique et ses oxydes sont utilisés depuis des décennies pour fixer des informations analogiques ou numériques sur des supports appropriés (bandes magnétiques, cassettes audio et vidéo, disquettes).</br> Le fer au contact de l'air va rouiller. ",
 				"universe": "String",
 				"InChIKey" : "XEEYBQQBJWHFJM-UHFFFAOYSA-N",
 				"wikipedia" : {
@@ -103,13 +103,13 @@
 				"symbol" : "Ag",
 				"frenchName" : "Argent",
 				"atomicNumber" :  "47",
-				"meltingPoint" : "1234.93",
-				"boilingPoint" : "2435",
-				"atomicRadius" : "144",
-				"density" : "10.49"
+				"meltingPoint" : "1234.93 K",
+				"boilingPoint" : "2435 K",
+				"atomicRadius" : "144 pm",
+				"density" : "10.49 g.cm^(-3)"
 			},
 			"information":{
-				"use" : "L'exploitation de l'Argent-métal a pris un essor formidable au XVIe siècle, lorsque l’Espagne s'est enrichie grâce à l'exploitation des mines d'argent mexicaines, alors les plus riches du monde, dont le produit transite via Anvers, première place financière mondiale, pour permettre d'importer des biens de l'Inde, où les marchands sont friands d'argent-métal. L'Empire espagnol bénéficie aussi de l'exploitation des mines d'argent du Potosi au siècle suivant. Dans les années 1860, la découverte de filons d'argent dans l'Ouest américain rend ce métal surabondant, lui faisant perdre sa valeur monétaire.",
+				"use" : "L'exploitation de l'Argent-métal a pris un essor formidable au XVIe siècle, lorsque l’Espagne s'est enrichie grâce à l'exploitation des mines d'argent mexicaines, alors les plus riches du monde, dont le produit transite via Anvers, première place financière mondiale, pour permettre d'importer des biens de l'Inde, où les marchands sont friands d'argent-métal. L'Empire espagnol bénéficie aussi de l'exploitation des mines d'argent du Potosi au siècle suivant. Dans les années 1860, la découverte de filons d'argent dans l'Ouest américain rend ce métal surabondant, lui faisant perdre sa valeur monétaire.<br/> Ce métal va aussi s'oxyder et cela va se traduire par un noircissement du métal.",
 				"universe":"String",
 				"InChIKey" :"BQCADISMDOOEFD-UHFFFAOYSA-N",
 				"wikipedia" : {
@@ -126,13 +126,13 @@
 				"symbol" : "Au",
 				"frenchName" : "Or",
 				"atomicNumber" :  "79",
-				"meltingPoint" : "1337.33",
-				"boilingPoint" : "3129",
-				"atomicRadius" : "144",
-				"density" : "19.30"
+				"meltingPoint" : "1337.33 K",
+				"boilingPoint" : "3129 K",
+				"atomicRadius" : "144 pm",
+				"density" : "19.30 g.cm^(-3)"
 			},
 			"information":{
-				"use" : "L'Homme utilise l'or depuis le Chalcolithique, à la fin de la Préhistoire. C'est le deuxième métal connu par l'homme après le cuivre. Le plus vieil objet en or a été mis au jour dans la nécropole de Varna (Bulgarie actuelle). Il est daté du milieu du Ve millénaire av. J.-C",
+				"use" : "L'Homme utilise l'or depuis le Chalcolithique, à la fin de la Préhistoire. C'est le deuxième métal connu par l'homme après le cuivre. Le plus vieil objet en or a été mis au jour dans la nécropole de Varna (Bulgarie actuelle). Il est daté du milieu du Ve millénaire av. J.-C.</br> L'or est utilisé de nos jours sous forme de lingot mais aussi pour les bijou et dans les composants technologiques (par exemple les pistes des processeurs).",
 				"universe":"String",
 				"InChIKey" : "PCHJSUWPFVWCPO-UHFFFAOYSA-N",
 				"wikipedia" : {
@@ -150,10 +150,10 @@
 				"symbol" : "Pb",
 				"frenchName" : "Plomb",
 				"atomicNumber" :  "82",
-				"meltingPoint" :"600.61",
-				"boilingPoint" : "2022",
-				"atomicRadius" : "175",
-				"density" : "11.34"
+				"meltingPoint" :"600.61 K",
+				"boilingPoint" : "2022 K",
+				"atomicRadius" : "175 pm",
+				"density" : "11.34 g.cm^(-3)"
 			},
 			"information":{
 				"use" : "Le plomb, relativement abondant dans la croûte terrestre, est l'un des métaux les plus anciennement connus et travaillés. On en a trouvé dans des pigments recouvrant des tombes ou dépouilles préhistoriques (40 000 ans avant J.-C.), mais aussi des objets.  En dépit de sa haute toxicité, et grâce probablement à sa facilité d'extraction, à sa grande malléabilité et à son bas point de fusion, il a été fréquemment utilisé lors de l'âge du bronze, durci par de l'antimoine et de l'arsenic trouvés sur les mêmes sites miniers. Il est mentionné dans les écritures cunéiformes sumériennes — sous le vocable a-gar513 — il y a près de 5 000 ans, ou encore dans l'Exode, rédigé il y a environ 2 500 ans. C'est souvent aussi un sous-produit de mines d'argent.",
