@@ -28,7 +28,7 @@ public class AccueilScreen extends JFrame {
 	protected CircuitFermeOption opt;
 	protected ValeursCircuitFerme val;
 	protected SchemaFerme schemaferme;
-	
+	protected Credits credit;
 	
 	public AccueilScreen(String titre, int width, int height){
 		super(titre);
@@ -39,10 +39,11 @@ public class AccueilScreen extends JFrame {
 		contentPane = getContentPane();
 		
 		
-		//init page choix caract
+		//init pages 
 		pageChoix = new ChoixCaract();
 		circuitferme = new CircuitFerme();
 		schemaferme = new SchemaFerme();
+		credit = new Credits();
 		
 		gPan = new JPanel();
 		gPan.setLayout(new BorderLayout(10,10));
@@ -62,6 +63,16 @@ public class AccueilScreen extends JFrame {
 		});
 		
 		JMenuItem Help = new JMenuItem("Credits");
+		Help.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				contentPane.removeAll();
+				contentPane.add(credit);
+				contentPane.repaint();
+				contentPane.revalidate();
+			}
+		});
+		
+		
 		JMenuItem Quit = new JMenuItem("Quit");
 		Quit.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
