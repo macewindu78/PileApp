@@ -31,8 +31,8 @@ public class CircuitFermeOption extends JFrame {
 		
 		
 		JPanel titlePan = new JPanel();
-		JLabel title = new JLabel("Options Circuit Fermé");
-		title.setFont(new Font("Arial", Font.PLAIN, 20 ));
+		JLabel title = new JLabel("Paramètres");
+		title.setFont(new Font("Arial", Font.BOLD, 20 ));
 		titlePan.add(title);
 			
 		

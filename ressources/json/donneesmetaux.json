@@ -15,7 +15,7 @@
 				"density" : "7.14 g.cm^(-3)"
 			},
 			"information":{
-				"use" :  "Le zinc est un métal de couleur bleu-gris, moyennement réactif, qui se combine avec l'oxygène et d'autres non-métaux, et qui réagit avec des acides dilués en dégageant de l'hydrogène.</br> Il est utilisé comme protection contre la corrosion des autres métaux. Mais aussi sous forme d'alliage pour la zinguerie et les pièces moulées dans l'industrie.",
+				"use" :  "Le zinc est un métal de couleur bleu-gris, moyennement réactif, qui se combine avec l'oxygène et d'autres non-métaux, et qui réagit avec des acides dilués en dégageant de l'hydrogène.<br/> Il est utilisé comme protection contre la corrosion des autres métaux. Mais aussi sous forme d'alliage pour la zinguerie et les pièces moulées dans l'industrie.",
 				"universe" : "String",
 				"InChIKey": "HCHKCACWOHOZIP-UHFFFAOYSA-N",
 				"wikipedia" : {
@@ -40,7 +40,7 @@
 				"density" : "2.70 g.cm^(-3)"
 			},
 			"information":{
-				"use" : "En tonnage et en valeur, l’aluminium est le métal le plus utilisé après le fer, grâce à sa légèreté et sa bonne conductivité électrique et thermique. L’aluminium pur est mou et fragile, mais avec des petites quantités de cuivre, magnésium, manganèse, silicium et d’autres éléments, il peut former des alliages aux propriétés variées.</br> Il est notamment utilisé dans les canettes de soda",
+				"use" : "En tonnage et en valeur, l’aluminium est le métal le plus utilisé après le fer, grâce à sa légèreté et sa bonne conductivité électrique et thermique. L’aluminium pur est mou et fragile, mais avec des petites quantités de cuivre, magnésium, manganèse, silicium et d’autres éléments, il peut former des alliages aux propriétés variées.<br/> Il est notamment utilisé dans les canettes de soda",
 				"universe":"String",
 				"InChIKey" : "XAGFODPZIPBFFR-UHFFFAOYSA-N",
 				"wikipedia" : {
@@ -63,7 +63,7 @@
 				"density" : "8.96 g.cm^(-3)"
 			},
 			"information":{
-				"use" : "Le cuivre est, avec l'or, le premier métal à avoir été utilisé par l'Homme parce qu'il fait partie des rares métaux qui se trouvent naturellement en tant que minéral pur, sous une forme native. En Europe occidentale, on situe l'âge du cuivre entre 3 200 et 2 000 environ av. J.-C. Cette période technologique est bien plus ancienne à l'est de la Méditerranée. Connu par certaines des plus anciennes civilisations, son usage remonte au moins à 10 000 ans. Des objets en cuivre datant de 8700 avant J.-C. ont été retrouvés au Moyen-Orient. C'est le cas d'un pendentif en cuivre retrouvé au nord de l’actuel Irak.</br> Il est utilisé pour les fils électriques, la plomberie,  les statues, les chaineau",
+				"use" : "Le cuivre est, avec l'or, le premier métal à avoir été utilisé par l'Homme parce qu'il fait partie des rares métaux qui se trouvent naturellement en tant que minéral pur, sous une forme native. En Europe occidentale, on situe l'âge du cuivre entre 3 200 et 2 000 environ av. J.-C. Cette période technologique est bien plus ancienne à l'est de la Méditerranée. Connu par certaines des plus anciennes civilisations, son usage remonte au moins à 10 000 ans. Des objets en cuivre datant de 8700 avant J.-C. ont été retrouvés au Moyen-Orient. C'est le cas d'un pendentif en cuivre retrouvé au nord de l’actuel Irak.<br/> Il est utilisé pour les fils électriques, la plomberie,  les statues, les chaineau",
 				"universe" : "String",
 				"InChIKey" : "RYGMFSIKBFXOCR-UHFFFAOYSA-N",
 				"wikipedia" : {
@@ -86,7 +86,7 @@
 				"density" : "7.874 g.cm^(-3)"
 			},
 			"information":{
-				"use" : "Le fer n'est pratiquement pas utilisé à l'état pur. C'est le principal élément entrant dans la composition de l'acier. L'appellation fil de fer ne signifie en rien fil en fer pur, les fils de fer sont en fait fabriqués en acier doux, très malléable. Le fer métallique et ses oxydes sont utilisés depuis des décennies pour fixer des informations analogiques ou numériques sur des supports appropriés (bandes magnétiques, cassettes audio et vidéo, disquettes).</br> Le fer au contact de l'air va rouiller. ",
+				"use" : "Le fer n'est pratiquement pas utilisé à l'état pur. C'est le principal élément entrant dans la composition de l'acier. L'appellation fil de fer ne signifie en rien fil en fer pur, les fils de fer sont en fait fabriqués en acier doux, très malléable. Le fer métallique et ses oxydes sont utilisés depuis des décennies pour fixer des informations analogiques ou numériques sur des supports appropriés (bandes magnétiques, cassettes audio et vidéo, disquettes).<br/> Le fer au contact de l'air va rouiller. ",
 				"universe": "String",
 				"InChIKey" : "XEEYBQQBJWHFJM-UHFFFAOYSA-N",
 				"wikipedia" : {
@@ -132,7 +132,7 @@
 				"density" : "19.30 g.cm^(-3)"
 			},
 			"information":{
-				"use" : "L'Homme utilise l'or depuis le Chalcolithique, à la fin de la Préhistoire. C'est le deuxième métal connu par l'homme après le cuivre. Le plus vieil objet en or a été mis au jour dans la nécropole de Varna (Bulgarie actuelle). Il est daté du milieu du Ve millénaire av. J.-C.</br> L'or est utilisé de nos jours sous forme de lingot mais aussi pour les bijou et dans les composants technologiques (par exemple les pistes des processeurs).",
+				"use" : "L'Homme utilise l'or depuis le Chalcolithique, à la fin de la Préhistoire. C'est le deuxième métal connu par l'homme après le cuivre. Le plus vieil objet en or a été mis au jour dans la nécropole de Varna (Bulgarie actuelle). Il est daté du milieu du Ve millénaire av. J.-C.<br/> L'or est utilisé de nos jours sous forme de lingot mais aussi pour les bijou et dans les composants technologiques (par exemple les pistes des processeurs).",
 				"universe":"String",
 				"InChIKey" : "PCHJSUWPFVWCPO-UHFFFAOYSA-N",
 				"wikipedia" : {

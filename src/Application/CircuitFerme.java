@@ -34,7 +34,7 @@ public class CircuitFerme extends JPanel{
 	JFreeChart chartMasse, chartConcentration;
 	ChartPanel cPanelMasse, cPanelConcentration ;
 	CategoryDataset datasetMasse, datasetconcentration;
-	boolean initial = true;
+	boolean initial = true, isTimer = false;
 	protected String[] fonctionTempsPourcent = {"0%","10%" , "20%", "30%" , "40%", "50%", "60%", "70%", "80%","90%", "100%"};
 	JComboBox fonctionTemps;
 	JButton EtatfinalInit, animation, schema;
@@ -157,8 +157,11 @@ public class CircuitFerme extends JPanel{
 		animation.setAlignmentX(CENTER_ALIGNMENT);
 		animation.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				
-				timer();
+				if(isTimer==false){
+					timer();
+					//System.out.println("timer");
+					changeBoolTimer(true);
+				}
 			}
 		});
 		
@@ -203,6 +206,8 @@ public class CircuitFerme extends JPanel{
 	
 	
 	public void timer(){
+		
+		
 		Timer tim = new Timer();
 		tim.scheduleAtFixedRate(new TimerTask(){
 			int i=0;			
@@ -222,13 +227,20 @@ public class CircuitFerme extends JPanel{
 					e.printStackTrace();
 				}
 				if(i>10){
+					changeBoolTimer(false);
 					this.cancel();
+					
+
 				}	
 
 			}
 		}, 0, 1*1000);
 		
-		
+	}
+	
+	public void changeBoolTimer(boolean yesno){
+		isTimer = yesno;
+		//System.out.println(yesno);
 	}
 	
 	

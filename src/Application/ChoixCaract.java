@@ -31,7 +31,7 @@ public class ChoixCaract extends JPanel {
 		
 		JPanel titlePan = new JPanel();
 		JLabel title = new JLabel("Choix des caracteristiques");
-		title.setFont(new Font("Arial", Font.PLAIN, 20 ));
+		title.setFont(new Font("Arial", Font.BOLD, 20 ));
 		titlePan.add(title);
 		
 		this.add(titlePan,BorderLayout.NORTH);

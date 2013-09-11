@@ -22,7 +22,7 @@ public class Credits extends JPanel{
 		
 		JPanel titlePan = new JPanel();
 		JLabel title = new JLabel("Credits");
-		title.setFont(new Font("Arial", Font.PLAIN, 25 ));
+		title.setFont(new Font("Arial", Font.BOLD, 35 ));
 		titlePan.add(title);
 		
 		JPanel grid = new JPanel();

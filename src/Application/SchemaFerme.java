@@ -63,7 +63,7 @@ public class SchemaFerme extends JPanel {
 		
 		//Boutons
 		JButton retour = new JButton("Retour");
-		retour.setBounds(2, 2, 200, 40);
+		retour.setBounds(0, 0, 200, 40);
 		retour.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				AccueilScreen.GetInstance().contentPane.removeAll();
@@ -76,7 +76,7 @@ public class SchemaFerme extends JPanel {
 		this.add(retour);
 		
 		JButton sensCourant = new JButton("Sens conventionnel du courant");
-		sensCourant.setBounds(743, 2, 250, 40);
+		sensCourant.setBounds(744, 0, 250, 40);
 		sensCourant.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				affichSensCourant();
@@ -124,7 +124,7 @@ public class SchemaFerme extends JPanel {
 				
 		
 		bfBas = new JLabel(new ImageIcon(getClass().getResource("/Imgs/blackflechebas.png")));
-		bfBas.setBounds(579, 20, 50, 50);
+		bfBas.setBounds(579, 200, 50, 50);
 		this.add(bfBas);
 		
 		bfHaut = new JLabel(new ImageIcon(getClass().getResource("/Imgs/blackflechehaut.png")));

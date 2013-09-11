@@ -29,7 +29,7 @@ public class GenerateHtml {
 		content = inputSString;
 	
 		//System.out.println(content);
-		 
+		
 		 try{
 			String path = Test.class.getProtectionDomain().getCodeSource().getLocation().getPath();
 			if(!Test.eclipse){
@@ -48,7 +48,7 @@ public class GenerateHtml {
 		 catch(IOException e){
 			 e.printStackTrace();
 		 }
-			 
+		 
 		
 		
 		fis = getClass().getResourceAsStream("/html/architecturemetal.html");
@@ -90,7 +90,7 @@ public class GenerateHtml {
 			
 
 		 
-		 fis = getClass().getResourceAsStream("/html/style.css");
+		 	fis = getClass().getResourceAsStream("/html/style.css");
 			String inputStreString = new Scanner(fis,"UTF-8").useDelimiter("\\A").next();
 
 			content = inputStreString;
